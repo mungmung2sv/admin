@@ -1,0 +1,265 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 캘린더 > 일정관리
+                </div>
+                <h2 class="page-title">
+                일정관리
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row row-cards">
+
+            <!-- 검색시작 -->
+            <div class="col-lg-3 aside-search" id="asideSearch">
+                <form action="" class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="subheader mb-2">날짜</div>
+                            <div class="date-control-box">
+                                <div>
+                                    <div class="input-icon mb-2">
+                                        <input class="form-control datepicker-icon startDate" placeholder="날짜"
+                                            value="" />
+                                        <span
+                                            class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                    d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                                                <path d="M16 3l0 4" />
+                                                <path d="M8 3l0 4" />
+                                                <path d="M4 11l16 0" />
+                                                <path d="M11 15l1 0" />
+                                                <path d="M12 15l0 3" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">시각</div>
+                            <div class="date-control-box">
+                                <div>
+                                    <div class="input-icon mb-2">
+                                        <input type="text" name="input-mask" class="form-control input-time" data-mask="00:00" data-mask-visible="true" placeholder="00:00" autocomplete="off">
+                                    </div>
+                                    <div class="input-icon mb-2">
+                                        <input type="text" name="input-mask" class="form-control input-time" data-mask="00:00" data-mask-visible="true" placeholder="00:00" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">컬러지정</div>
+                            <div class="ip_group">
+                                <input type="color" class="form-control form-control-color w-100" value="#6255f6">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">일정제목</div>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">일정내용</div>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox">
+                                <span class="form-check-label">참가신청받기</span>
+                            </label>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">신청자수(총 행사인원)</div>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">인당 최대신청자수</div>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="btn-group w-100" role="group">
+                            <button class="btn btn-warning">
+                                일정삭제
+                            </button>
+                            <button class="btn btn-primary">
+                                일정수정
+                            </button>
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn btn-primary w-100">
+                                일정등록하기
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="aside-open aside-add" id="asideOpen">일정등록</button>
+            </div>
+            <!-- //검색시작 -->
+
+            <!-- 콘텐츠 시작 -->
+            <div class="col-lg-9 content-area">
+                <div class="calendar_wrap">
+                    <div class="calendar_top">
+                        <button type="button" class="prev_month">이전 달</button>
+                        <div class="date"></div>
+                        <button type="button" class="next_month">다음 달</button>
+                    </div>
+
+                    <div class="calendar">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>일</th>
+                                    <th>월</th>
+                                    <th>화</th>
+                                    <th>수</th>
+                                    <th>목</th>
+                                    <th>금</th>
+                                    <th>토</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <script>
+                const events = [
+                    {
+                        title: '음악회',
+                        start: '2023-11-09T10:00',
+                        end: '2023-11-09T15:00',
+                        id: '12312344', //일정 상세 링크 id
+                        color: '#2dc5ab',
+                    },
+                    {
+                        title: '김장봉사',
+                        start: '2023-11-15T10:00',
+                        end: '2023-11-15T15:00',
+                        id: '123567542', //일정 상세 링크 id
+                        color: '#835feb',
+                    },
+                    {
+                        title: '김장봉사2',
+                        start: '2023-11-15T17:00',
+                        end: '2023-11-15T20:00',
+                        id: '2323567542', //일정 상세 링크 id
+                        color: '#5d3ac3',
+                    },
+                ];
+
+                let currentMonthDate = new Date();
+
+                const dateElement = document.querySelector('.date');
+
+                // 이전 달 버튼 클릭 시
+                document.querySelector('.prev_month').addEventListener('click', function () {
+                    currentMonthDate.setMonth(currentMonthDate.getMonth() - 1);
+                    updateCalendar();
+                });
+
+                // 다음 달 버튼 클릭 시
+                document.querySelector('.next_month').addEventListener('click', function () {
+                    currentMonthDate.setMonth(currentMonthDate.getMonth() + 1);
+                    updateCalendar();
+                });
+
+                // 달력 업데이트 함수
+                function updateCalendar() {
+                    createCalendar(currentMonthDate);
+                }
+
+                createCalendar(currentMonthDate);
+
+                function createCalendar(date) {
+                    dateElement.textContent = `${date.getFullYear()}.${date.getMonth() + 1}`;
+
+                    const calendarBody = document.querySelector('.calendar tbody');
+                    const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+                    const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+                    const lastDayOfPrevMonth = new Date(date.getFullYear(), date.getMonth(), 0);
+
+                    // 달력 테이블 초기화
+                    calendarBody.innerHTML = '';
+
+                    let currentWeek = document.createElement('tr');
+                    let dayCount = 0;
+
+                    // 이전 달의 마지막 주
+                    const prevMonthLastDay = lastDayOfPrevMonth.getDate();
+                    for (let i = firstDayOfMonth.getDay() - 1; i >= 0; i--) {
+                        const cell = document.createElement('td');
+                        cell.classList.add('prev');
+                        cell.innerHTML = `<span class="day">${prevMonthLastDay - i}</span>`;
+                        currentWeek.appendChild(cell);
+                        dayCount++;
+                    }
+
+                    // 현재 달
+                    for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
+                        const cell = document.createElement('td');
+                        cell.innerHTML = `<span class="day">${i}</span>`;
+                        for (const event of events) {
+                            const eventDate = new Date(event.start);
+                            if (
+                                eventDate.getFullYear() === date.getFullYear() &&
+                                eventDate.getMonth() === date.getMonth() &&
+                                eventDate.getDate() === i
+                            ) {
+                                const eventLink = document.createElement('a');
+                                eventLink.className = 'schedule';
+                                eventLink.style.backgroundColor = event.color;
+                                eventLink.innerHTML = `${event.title} (${event.start.split('T')[1]} ~ ${event.end.split('T')[1]})`;
+                                eventLink.href = `?${event.id}`; // 링크 추가
+                                cell.appendChild(eventLink);
+                            }
+                        }
+                        currentWeek.appendChild(cell);
+                        dayCount++;
+
+                        if (dayCount % 7 === 0) {
+                            calendarBody.appendChild(currentWeek);
+                            currentWeek = document.createElement('tr');
+                        }
+                    }
+
+                    for (let i = 1; i <= 6 - lastDayOfMonth.getDay(); i++) {
+                        const cell = document.createElement('td');
+                        cell.classList.add('next');
+                        cell.innerHTML = `<span class="day">${i}</span>`;
+                        currentWeek.appendChild(cell);
+                    }
+
+                    calendarBody.appendChild(currentWeek);
+                }
+            </script>
+
+            </div>
+            <!-- 콘텐츠 끝 -->
+        </div>
+    </div>
+</div>
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

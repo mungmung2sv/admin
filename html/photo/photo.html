@@ -1,0 +1,254 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 사진첩 > 사진첩목록
+                </div>
+                <h2 class="page-title">
+                사진첩목록
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row row-cards">
+
+            <!-- 검색시작 -->
+            <div class="col-lg-3 aside-search" id="asideSearch">
+                <form action="" class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="subheader mb-2">등록일</div>
+                            <div class="date-control-box">
+                                <div>
+                                    <div class="input-icon mb-2">
+                                        <input class="form-control datepicker-icon startDate" placeholder="시작일"
+                                            value="" />
+                                        <span
+                                            class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                    d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                                                <path d="M16 3l0 4" />
+                                                <path d="M8 3l0 4" />
+                                                <path d="M4 11l16 0" />
+                                                <path d="M11 15l1 0" />
+                                                <path d="M12 15l0 3" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="input-icon mb-2">
+                                        <input class="form-control datepicker-icon endDate" placeholder="종료일"
+                                            value="" />
+                                        <span
+                                            class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                    d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                                                <path d="M16 3l0 4" />
+                                                <path d="M8 3l0 4" />
+                                                <path d="M4 11l16 0" />
+                                                <path d="M11 15l1 0" />
+                                                <path d="M12 15l0 3" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">분류</div>
+                            <select class="form-select">
+                                <option value="전체" selected>전체</option>
+                                <option value="책방지기">책방지기</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">상태</div>
+                            <select class="form-select">
+                                <option value="전체" selected>전체</option>
+                                <option value="노출">노출</option>
+                                <option value="비노출">비노출</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">검색</div>
+                            <select class="form-select mb-1">
+                                <option value="앨범명" selected>앨범명</option>
+                                </select>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn btn-primary w-100">
+                                검색
+                            </button>
+                            <a href="#" class="btn btn-secondary w-100 mt-1">
+                                검색 초기화
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="aside-open" id="asideOpen">목록 검색</button>
+            </div>
+            <!-- //검색시작 -->
+
+            <!-- 콘텐츠 시작 -->
+            <div class="col-lg-9 content-area">
+                <form action="">
+                    <div class="list-btns justify-content-between mb-3">
+                        <div>
+                            <a href="./photo_add.html" class="btn btn-primary">앨범등록</a>
+                        </div>
+                        <div>
+                            <select class="form-select ms-1 float-start w-auto">
+                                <option selected>등록일 역순 ⬆</option>
+                                <option>등록일 순 ⬇</option>
+                                <option>수정일 역순⬆</option>
+                                <option>수정일 순 ⬇</option>
+                                <option>접속일 역순⬆</option>
+                                <option>접속일 순 ⬇</option>
+                            </select>
+                            <select class="form-select ms-1 float-start w-auto">
+                                <option selected>20개씩 보기</option>
+                                <option>30개씩 보기</option>
+                                <option>50개씩 보기</option>
+                                <option>100개씩 보기</option>
+                                <option>200개씩 보기</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="card table-mb-card">
+                        <div class="table-responsive">
+                            <table class="table table-vcenter card-table text-center table-mb label-control">
+                                <thead>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>분류</th>
+                                        <th>앨범명</th>
+                                        <th>대표이미지</th>
+                                        <th>이미지개수</th>
+                                        <th>좋아요</th>
+                                        <th>찜</th>
+                                        <th>상태</th>
+                                        <th>등록일</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="list-empty">
+                                            내역이 존재하지 않습니다.
+                                        </td>
+                                    </tr>
+                                    <tr class="hover_cnt">
+                                        <td><span class="tm_tit">번호</span><span class="tm_cnt">2</span></td>
+                                        <td><span class="tm_tit">분류</span><span class="tm_cnt">책방지기</span></td>
+                                        <td><span class="tm_tit">앨범명</span><span class="tm_cnt"><a href="photo_detail.html" class="link">음악회에서</a></span></td>
+                                        <td><span class="tm_tit">대표이미지</span><span class="tm_cnt"><span class="tm_cnt short_cut"><img src="../../dist/img/img.jpg" alt=""></span></td>
+                                        <td><span class="tm_tit">이미지개수</span><span class="tm_cnt">10</span></td>
+                                        <td><span class="tm_tit">좋아요</span><span class="tm_cnt">10</span></td>
+                                        <td><span class="tm_tit">찜</span><span class="tm_cnt">10</span></td>
+                                        <td><span class="tm_tit">상태</span><span class="tm_cnt">노출</span></td>
+                                        <td><span class="tm_tit">등록일</span><span class="tm_cnt">2023-10-10 11:11:11</span></td>
+                                    </tr>
+                                    <tr class="hover_cnt">
+                                        <td><span class="tm_tit">번호</span><span class="tm_cnt">1</span></td>
+                                        <td><span class="tm_tit">분류</span><span class="tm_cnt">책방지기</span></td>
+                                        <td><span class="tm_tit">앨범명</span><span class="tm_cnt"><a href="photo_detail.html" class="link">책방에서</a></span></td>
+                                        <td><span class="tm_tit">대표이미지</span><span class="tm_cnt"><span class="tm_cnt short_cut"><img src="../../dist/img/img.jpg" alt=""></span></td>
+                                        <td><span class="tm_tit">이미지개수</span><span class="tm_cnt">10</span></td>
+                                        <td><span class="tm_tit">좋아요</span><span class="tm_cnt">10</span></td>
+                                        <td><span class="tm_tit">찜</span><span class="tm_cnt">10</span></td>
+                                        <td><span class="tm_tit">상태</span><span class="tm_cnt">비노출</span></td>
+                                        <td><span class="tm_tit">등록일</span><span class="tm_cnt">2023-10-10 11:11:11</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="display-flex justify-content-center">
+                    <ul class="pagination mt-4">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-chevrons-left" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M11 7l-5 5l5 5"></path>
+                                    <path d="M17 7l-5 5l5 5"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M15 6l-6 6l6 6"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M9 6l6 6l-6 6"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-chevrons-right" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M7 7l5 5l-5 5"></path>
+                                    <path d="M13 7l5 5l-5 5"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 콘텐츠 끝 -->
+        </div>
+    </div>
+</div>
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

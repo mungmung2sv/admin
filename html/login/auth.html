@@ -1,0 +1,76 @@
+<?php
+include_once('../../layout/header.html');
+?>
+
+<div class="page page-center">
+    <div class="container container-tight py-4">
+        <div class="text-center mb-3">
+            <div class="navbar-brand navbar-brand-autodark">
+            admin 
+            </div>
+        </div>
+        <div class="card card-md">
+            <div class="card-body text-center py-4 p-sm-4">
+                <h2>본 사이트는 admin <br /> 관리자 페이지 입니다</h2>
+                <p class="text-muted">비승인된 사람이나 비정상적인 접근으로 로그인할 경우<br />
+                    민ㆍ형사상 책임을 질 수 있습니다</p>
+            </div>
+            <div class="hr-text hr-text-center hr-text-spaceless">LOGIN</div>
+
+
+            <div class="card-body">
+                <div class="lg_step mb-4">
+                    <ul class="clearfix">
+                        <li>01. 아이디/비밀번호 입력</li>
+                        <li class="on">02. 2차 인증</li>
+                    </ul>
+                </div>
+
+                <small class="form-hint mb-2">
+                    등록된 휴대폰으로 인증번호가 전송되었습니다.
+                </small>
+                <button class="btn btn-secondary w-100 mb-3" type="button">인증번호 재 발송</button>
+                <div class="mb-3">
+                    <label class="form-label">인증번호</label>
+                    <div class="input-group custom-search-form size_xl">
+                        <input name="" type="text" id="" class="form-control" required="" placeholder="인증번호를 입력해주세요.">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="countdown">2:00</span>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    let seconds = 120;
+
+                    function countdown() {
+                        const counter = document.getElementById("countdown");
+                        const minutes = Math.floor(seconds / 60);
+                        const remainingSeconds = seconds % 60;
+
+                        counter.innerHTML = `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+
+                        if (seconds > 0) {
+                            seconds--;
+                            setTimeout(countdown, 1000);
+                        } else {
+                            alert("입력시간이 초과되었습니다. 재발송버튼을 눌러 다시 인증해주세요.");
+                        }
+                    }
+                    countdown()
+                </script>
+                <div class="mt-4">
+                    <a href="../main/index.html" class="btn btn-primary w-100">
+                        로그인
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<?php
+include_once('../../layout/footer_sub.html');
+?>

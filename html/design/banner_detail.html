@@ -1,0 +1,215 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                홈 > 디자인 > 팝업관리 > 배너 목록 > 배너상세
+                </div>
+                <h2 class="page-title">
+                배너상세 (배너제목이 표기됩니다)
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <form action="">
+        <div class="list-btns justify-content-end mb-3">
+            <div>
+                <a href="./banner.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2 required">상태</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="wtDisplay" >
+                                        <span class="form-check-label">노출함</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="wtDisplay">
+                                        <span class="form-check-label">노출안함</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">노출시작기간</div>
+                                <div>
+                                    <div>
+                                        <div class="row g-2">
+                                            <div class="input-icon mb-2 col-8">
+                                                <input class="form-control datepicker-icon" placeholder="시작일" value=""/>
+                                                <span
+                                                    class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                        stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path
+                                                            d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                                                        <path d="M16 3l0 4" />
+                                                        <path d="M8 3l0 4" />
+                                                        <path d="M4 11l16 0" />
+                                                        <path d="M11 15l1 0" />
+                                                        <path d="M12 15l0 3" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="text" name="input-mask" class="form-control input-time" data-mask="00:00" data-mask-visible="true" placeholder="00:00" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <small class="form-hint mt-2">
+                                        미 입력 시 상시 노출됩니다
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">노출종료기간</div>
+                                <div>
+                                    <div>
+                                        <div class="row g-2">
+                                            <div class="input-icon mb-2 col-8">
+                                                <input class="form-control datepicker-icon" placeholder="종료일" value=""/>
+                                                <span
+                                                    class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                        stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path
+                                                            d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                                                        <path d="M16 3l0 4" />
+                                                        <path d="M8 3l0 4" />
+                                                        <path d="M4 11l16 0" />
+                                                        <path d="M11 15l1 0" />
+                                                        <path d="M12 15l0 3" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="text" name="input-mask" class="form-control input-time" data-mask="00:00" data-mask-visible="true" placeholder="00:00" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <small class="form-hint mt-2">
+                                        미 입력 시 상시 노출됩니다
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">배너정보</h3></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2 required">제목</div>
+                                <div class="input-group">
+                                    <input class="form-control max-text" id="" maxlength="20" type="text" name="" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text max-len"><b>0</b> / 20</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">배너 이미지</div>
+                                <!-- file-type 업로드 가능한 파일 확장자 file-max-size 용량 제한 mb -->
+                                <div class="input-group mb-1">
+                                    <input type="file" class="form-control file-add photo_thum" file-type="jpg jpeg png" file-max-size="3" value="file_name.jpg">
+                                    <div class="photo_images">
+                                    </div><!-- 이미지 미리보기 -->
+                                    <button class="btn bg-secondary text-light" type="button">삭제</button>
+                                </div>
+                                <small class="form-hint mt-2">
+                                    최대 3MB까지 등록가능. jpg, jpeg, png
+                                </small>
+
+                                <!-- 기존에 등록된 이미지가 있을때 노출 -->
+                                <div class="uploaded_file input-group mt-2">
+                                    <label class="form-check m-0">
+                                        <input class="form-check-input" type="checkbox">
+                                        등록된 이미지파일 삭제하기
+                                        (file_name.jpg)
+                                        <div class="photo_images">
+                                            <div class="item"><img src="../../dist/img/img.jpg" alt=""></div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <small class="form-hint mt-2">
+                                    새로운 이미지 등록시 기존에 등록된 이미지파일은 자동삭제됩니다.
+                                </small>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">이동링크 주소</div>
+                                <input class="form-control" type="text" name="" placeholder="https://example.com">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">부가정보</h3></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">최종수정일</div>
+                                <input type="text" class="form-control" value="2022-22-22 11:11:11" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">최종수정자</div>
+                                <input type="text" class="form-control" value="admin_id" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">등록자</div>
+                                <input type="text" class="form-control" value="admin_id" readonly="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-btns justify-content-between mt-3">
+            <div>
+                <div>
+                    <button type="button" class="btn btn-warning">삭제</button>
+                </div>
+            </div>
+            <div>
+                <a href="./banner.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

@@ -1,0 +1,244 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 메시지 > 푸시관리 > 푸시 메시지상세
+                </div>
+                <h2 class="page-title">
+                푸시 메시지상세 (제목이 표기됩니다.)
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <form action="">
+        <div class="list-btns justify-content-end mb-3">
+            <div>
+                <a href="./push.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                        <div class="col-lg-4">
+                                <div class="subheader mb-2 required">회원구분</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <span class="form-check-label">일반회원</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <span class="form-check-label">평생회원</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="subheader mb-2 required">제목</div>
+                                <div class="input-group">
+                                    <input class="form-control max-text" id="" maxlength="30" type="text" name="" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text max-len"><b>0</b> / 30</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2 required">메시지</div>
+                                <div class="input-group">
+                                    <textarea name="" id="" class="form-control max-text" maxlength="500"></textarea>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text max-len"><b>0</b> / 500자</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">발송정보</h3></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">예약발송</div>
+                                <div>
+                                    <div>
+                                        <div class="row g-2">
+                                            <div class="input-icon mb-2 col-8">
+                                                <input class="form-control datepicker-icon" placeholder="시작일" value=""/>
+                                                <span
+                                                    class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                        stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path
+                                                            d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                                                        <path d="M16 3l0 4" />
+                                                        <path d="M8 3l0 4" />
+                                                        <path d="M4 11l16 0" />
+                                                        <path d="M11 15l1 0" />
+                                                        <path d="M12 15l0 3" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="text" name="input-mask" class="form-control input-time" data-mask="00:00" data-mask-visible="true" placeholder="00:00" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">푸시알림 링크(key)</div>
+                                <div class="input-group">
+                                    <input class="form-control max-text" id="" maxlength="100" type="text" name="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text max-len"><b>0</b> / 100</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">푸시알림 링크(value)</div>
+                                <div class="input-group">
+                                    <input class="form-control max-text" id="" maxlength="200" type="text" name="">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text max-len"><b>0</b> / 200</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">이미지</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="messageImage" value="file">
+                                        <span class="form-check-label">이미지 첨부</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="messageImage" value="link">
+                                        <span class="form-check-label">링크입력</span>
+                                    </label>
+                                </div>
+                                <div id="file-input" class="input-group mb-1" style="display:none;">
+                                    <input id="messageImageFile" type="file" class="form-control file-add" file-type="jpg jpeg png" file-max-size="10">
+                                    <button class="btn bg-secondary text-light" type="button">삭제</button>
+                                </div>
+                                <div id="link-input" class="input-group mb-1" style="display:none;">
+                                    <input id="messageImageLink" class="form-control" type="text" name="" placeholder="https://example.com">
+                                </div>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', () => {
+                                        const radioButtons = document.querySelectorAll('input[name="messageImage"]');
+                                        const fileInput = document.getElementById('file-input');
+                                        const linkInput = document.getElementById('link-input');
+                                        const fileInputIp = document.getElementById('messageImageFile');
+                                        const linkInputIp = document.getElementById('messageImageLink');
+
+                                        radioButtons.forEach(radioButton => {
+                                            radioButton.addEventListener('change', (event) => {
+                                            if (event.target.value === 'file') {
+                                                fileInput.style.display = 'flex';
+                                                linkInputIp.value = '';
+                                                linkInput.style.display = 'none';
+                                            } else if (event.target.value === 'link') {
+                                                fileInputIp.value = '';
+                                                fileInput.style.display = 'none';
+                                                linkInput.style.display = 'flex';
+                                            }
+                                            });
+
+                                            // 로드 시 체크항목 display
+                                            if (radioButton.checked) {
+                                            if (radioButton.value === 'file') {
+                                                fileInput.style.display = 'flex';
+                                            } else if (radioButton.value === 'link') {
+                                                linkInput.style.display = 'flex';
+                                            }
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">발송정보</h3></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">상태</div>
+                                <div>
+                                    대기
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">등록일</div>
+                                <div>
+                                    2023-02-07 13:59:59, admin1
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">최종수정일</div>
+                                <div>
+                                    2023-02-07 13:59:59, admin1
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">테스트 푸시발송일</div>
+                                <div>
+                                    2023-02-07 13:59:59, admin1
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">푸시발송일</div>
+                                <div>
+                                    2023-02-07 13:59:59, admin1
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-btns justify-content-between mt-3">
+            <div>
+                <button type="button" class="btn btn-warning">삭제</button>
+                <button type="button" class="btn btn-teal">테스트 푸시발송</button>
+                <button type="button" class="btn btn-teal">푸시발송</button>
+            </div>
+            <div>
+                <a href="./push.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

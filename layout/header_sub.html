@@ -1,0 +1,402 @@
+<!-- 페이지 히스토리 탭 -->
+<div class="page-history"></div>
+
+<header class="navbar navbar-expand-md navbar-light d-print-none">
+    <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+            aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+            <a href="../main/index.html">
+            admin 
+            </a>
+        </h1>
+        <div class="navbar-nav flex-row order-md-last">
+            <div class="nav-item d-md-flex me-3">
+                <div class="btn-list">
+                    <a href="../login/login.html" class="btn" rel="noreferrer">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="me-1" width="24" height="24" viewBox="0 0 24 24">
+                            <title>logout-variant</title>
+                            <path
+                                d="M14.08,15.59L16.67,13H7V11H16.67L14.08,8.41L15.5,7L20.5,12L15.5,17L14.08,15.59M19,3A2,2 0 0,1 21,5V9.67L19,7.67V5H5V19H19V16.33L21,14.33V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3H19Z" />
+                        </svg>
+                        <span>로그아웃</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link d-flex lh-1 text-reset p-0" >
+                    <svg class="avatar avatar-sm" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="-3 -3 30 30">
+                        <title>account-circle-outline</title>
+                        <path
+                            d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7.07,18.28C7.5,17.38 10.12,16.5 12,16.5C13.88,16.5 16.5,17.38 16.93,18.28C15.57,19.36 13.86,20 12,20C10.14,20 8.43,19.36 7.07,18.28M18.36,16.83C16.93,15.09 13.46,14.5 12,14.5C10.54,14.5 7.07,15.09 5.64,16.83C4.62,15.5 4,13.82 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,13.82 19.38,15.5 18.36,16.83M12,6C10.06,6 8.5,7.56 8.5,9.5C8.5,11.44 10.06,13 12,13C13.94,13 15.5,11.44 15.5,9.5C15.5,7.56 13.94,6 12,6M12,11A1.5,1.5 0 0,1 10.5,9.5A1.5,1.5 0 0,1 12,8A1.5,1.5 0 0,1 13.5,9.5A1.5,1.5 0 0,1 12,11Z" />
+                    </svg>
+                    <div class="d-none d-xl-block ps-1">
+                        <div>홍길동</div>
+                        <div class="mt-1 small text-muted">최상위관리자</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<header class="navbar-expand-md">
+    <div class="collapse navbar-collapse" id="navbar-menu">
+        <div class="navbar navbar-light">
+            <div class="container-xl">
+                <ul class="navbar-nav">
+                    <li class="nav-item <?php if(strstr($_SERVER['REQUEST_URI'], "/main/")) {?>active<?php }?>">
+                        <a class="nav-link" href="../main/index.html">
+                            <span
+                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path stroke="black" d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
+                                <path stroke="black" d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+                                <path stroke="black" d="M10 12h4v4h-4z"></path>
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                대시보드
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/member/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span
+                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path stroke="black" d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                                <path stroke="black" d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                                </svg>
+                            </span>
+                            </span>
+                            <span class="nav-link-title">
+                                회원
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../member/member.html">
+                                        회원목록
+                                    </a>
+                                    <a class="dropdown-item" href="../member/member_add.html">
+                                        회원등록
+                                    </a>
+                                    <a class="dropdown-item" href="../member/order.html">
+                                        결제목록
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/feed/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path stroke="black" d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                    <path stroke="black" d="M4 4a16 16 0 0 1 16 16" />
+                                    <path stroke="black" d="M4 11a9 9 0 0 1 9 9" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                피드관리
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../feed/feed.html">
+                                        피드관리
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/photo/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span
+                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path stroke="black" d="M15 8h.01"></path>
+                                <path stroke="black" d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z"></path>
+                                <path stroke="black" d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"></path>
+                                <path stroke="black" d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"></path>
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                사진첩
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../photo/photo.html">
+                                        사진첩목록
+                                    </a>
+                                    <a class="dropdown-item" href="../photo/photo_add.html">
+                                        사진등록
+                                    </a>
+                                    <a class="dropdown-item" href="../photo/category.html">
+                                        사진첩 분류 관리
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/recommend/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span
+                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-books" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path stroke="black" d="M5 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
+                                    <path stroke="black" d="M9 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
+                                    <path stroke="black" d="M5 8h4" />
+                                    <path stroke="black" d="M9 16h4" />
+                                    <path stroke="black" d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041z" />
+                                    <path stroke="black" d="M14 9l4 -1" />
+                                    <path stroke="black" d="M16 16l3.923 -.98" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                추천도서
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../recommend/book.html">
+                                        추천도서관리
+                                    </a>
+                                    <a class="dropdown-item" href="../recommend/category.html">
+                                        추천도서 분류 관리
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/board/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span
+                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="black" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path stroke="black" d="M9 6l11 0" />
+                                    <path stroke="black" d="M9 12l11 0" /><path d="M9 18l11 0" />
+                                    <path stroke="black" d="M5 6l0 .01" /><path d="M5 12l0 .01" />
+                                    <path stroke="black" d="M5 18l0 .01" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                게시판
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../board/board_story.html">
+                                        OO이야기
+                                    </a>
+                                    <a class="dropdown-item" href="../board/board_story.html">
+                                        일상이야기
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/calendar/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path stroke="black" d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                            <path stroke="black" d="M16 3v4"></path>
+                            <path stroke="black" d="M8 3v4"></path>
+                            <path stroke="black" d="M4 11h16"></path>
+                            <path stroke="black" d="M11 15h1"></path>
+                            <path stroke="black" d="M12 15v3"></path>
+                            </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                캘린더
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../calendar/calendar.html">
+                                        일정관리
+                                    </a>
+                                    <a class="dropdown-item" href="../calendar/roster.html">
+                                        참가자명단
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/message/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path stroke="black" d="M10 14l11 -11"></path>
+                            <path stroke="black" d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"></path>
+                            </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                메시지
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../message/push.html">
+                                        푸시관리 목록
+                                    </a>
+                                    <a class="dropdown-item" href="../message/device.html">
+                                        디바이스
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/design/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-collage" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path stroke="black" d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                            <path stroke="black" d="M10 4l4 16"></path>
+                            <path stroke="black" d="M12 12l-8 2"></path>
+                            </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                디자인설정
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../design/color.html">
+                                        사이트 색상 지정
+                                    </a>
+                                    <a class="dropdown-item" href="../design/banner.html">
+                                        배너관리
+                                    </a>
+                                    <a class="dropdown-item" href="../design/popup.html">
+                                        팝업관리
+                                    </a>
+                                    <a class="dropdown-item" href="../design/idcard.html">
+                                        ID카드관리
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/cs/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-headset" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path stroke="black" d="M4 14v-3a8 8 0 1 1 16 0v3"></path>
+                            <path stroke="black" d="M18 19c0 1.657 -2.686 3 -6 3"></path>
+                            <path stroke="black" d="M4 14a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2v-3z"></path>
+                            <path stroke="black" d="M15 14a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2v-3z"></path>
+                            </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                고객센터
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../cs/qna.html">
+                                        1:1문의
+                                    </a>
+                                    <a class="dropdown-item" href="../cs/notice.html">
+                                        공지사항
+                                    </a>
+                                    <a class="dropdown-item" href="../cs/faq.html">
+                                        FAQ
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/setting/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path stroke="black" d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path>
+                            <path stroke="black" d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                            </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                설정
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../setting/admin.html">
+                                        관리자관리
+                                    </a>
+                                    <a class="dropdown-item" href="../setting/forbidden.html">
+                                        금칙어관리
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown <?php if(strstr($_SERVER['REQUEST_URI'], "/support/")) {?>active<?php }?>">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="black"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-heart-dollar">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M13 19l-1 1l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 0 1 8.785 4.444" />
+                                <path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" />
+                                <path d="M19 21v1m0 -8v1" />
+                            </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                후원
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" href="../support/support.html">
+                                        후원목록
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="page-wrapper">
+
+  

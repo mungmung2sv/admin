@@ -1,0 +1,691 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                홈 > 피드 > 피드상세
+                </div>
+                <h2 class="page-title">
+                피드상세 (글 num)
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <form action="">
+        <div class="list-btns justify-content-end mb-3">
+            <div>
+                <a href="./room.html" class="btn btn-secondary">목록</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">피드 고유번호</div>
+                                <input type="text" class="form-control" value="202304176578" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">등록일</div>
+                                <input type="text" class="form-control" value="2023-04-28 23:59" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">상태</div>
+                                <select class="form-select">
+                                    <option value="정상" selected>정상</option>
+                                    <option value="신고중">신고중</option>
+                                    <option value="가림">가림</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">피드 내용</div>
+                                <div class="input-group" style="background-color:#F7F7F7;padding:20px;border-radius:4px;">
+                                    <div style="width:100%;">
+                                    <mini-editor placeholder="내용을 입력하세요 (#해시태그)" class="max-text" maxlength="2000" ></mini-editor>
+                                    <div class="max-len" style="text-align:right;"><b class="count">0</b> / 2000</div>
+                                    </div>
+                                </div>
+                                <script>
+                                class MiniEditor extends HTMLElement {
+                                    constructor(){
+                                        super();
+                                        this._value = '';
+                                    }
+
+                                    connectedCallback(){
+                                        var shadow = this.attachShadow({ mode:'open'});
+                                        var wrapper = document.createElement('div');
+                                        var placeholder = document.createElement('div');
+                                        var outp = document.createElement('div');
+                                        var inp = document.createElement('div');
+                                        wrapper.setAttribute('class', 'editor-body');
+
+                                        var style = document.createElement('style');
+                                        style.textContent = `
+                                        div.editor-body {width:100%;height:100%;overflow-y:auto;overflow-x:none;height:300px;font-size:14px;position:relative;box-sizing:border-box;                    }
+                                        div.editor-body>div {box-sizing:border-box;}
+                                        div.outp, div.placeholder{pointer-events:none;}
+                                        div a.hashtag{color:#3581F2;text-decoration:none;}
+                                        div.placeholder {color:#666;}
+                                        .inp {z-index:1;}
+                                        div.outp {z-index:2;}
+                                        div.outp, .inp, div.placeholder {text-align:left;width:100%;height:auto;min-height:100%;position:absolute;top:0;left:0;overflow-y:visible;}
+                                        div.outp:focus, .inp:focus, div.placeholder:focus {outline:none;}
+                                        `;
+
+                                        placeholder.setAttribute('class', 'placeholder');
+                                        if( this.hasAttribute('placeholder') ){
+                                        placeholder.innerHTML = this.getAttribute('placeholder');
+                                        }else{
+                                        console.log(this.hasAttribute('placeholder'));
+                                        placeholder.innerHTML = '';
+                                        }
+
+                                        outp.setAttribute('class', 'outp');
+                                        inp.setAttribute('class', 'inp');
+                                        inp.setAttribute('contenteditable', true);
+
+                                        inp.addEventListener('input', this.update.bind(this), false);
+                                        inp.addEventListener('keydown', this.keydown.bind(this), false);
+                                        inp.addEventListener('paste', this.paste.bind(this), false);
+
+                                        shadow.appendChild(wrapper);
+                                        shadow.appendChild(style);
+
+                                        wrapper.appendChild(placeholder);
+                                        wrapper.appendChild(inp);
+                                        wrapper.appendChild(outp);
+
+                                        this._children = {
+                                        placeholder, inp, outp
+                                        };
+                                        if(this.hasAttribute('value')){
+                                        this._value = this.getAttribute('value');
+                                        this.checkvalue();
+                                        }
+                                        this.shadow = shadow;
+                                    }
+
+                                    checkvalue(){
+                                        if( this._value.length > 0 ){
+                                        this._children.placeholder.style.display = 'none';
+                                        }else{
+                                        this._children.placeholder.style.display = 'block';
+                                        } 
+                                        this._children.outp.innerHTML = this._value;
+                                    }
+
+                                    set value(v){
+                                        this._value = v;
+                                        this.checkvalue();
+                                    }
+
+                                    get value(){
+                                        return this._value;
+                                    }
+
+                                    update(e){
+                                        var str = e.target.innerText;
+                                        str = str
+                                        .replace(/[<>\&]/gim, (i)=>'&#' + i.charCodeAt(0) + ';')
+                                        .replace(/\n/g, "&nbsp;\n<br />")
+                                        .replace(/^(#\S+)/g, "<a href='javascript:;' class='hashtag'>$1</a>")
+                                        .replace(/(^|\s|\u200B)(#\S+)/g, "$1<a href='javascript:;' class='hashtag'>$2</a>");
+                                        this.value = str;
+                                    }
+
+                                    putAtCaret(content){
+                                        let sel, range;
+                                        if( this.shadow.getSelection ){
+                                        sel = this.shadow.getSelection();
+                                        if( sel.getRangeAt && sel.rangeCount ){
+                                            range = sel.getRangeAt(0);
+                                            range.deleteContents();
+                                            var el = document.createElement('div');
+                                            el.innerHTML = content;
+                                            var frag = document.createDocumentFragment(), node, lastNode;
+                                            while( (node=el.firstChild) ){
+                                            lastNode = frag.appendChild(node);
+                                            }
+                                            range.insertNode(frag);
+                                            if( lastNode ){
+                                            range = range.cloneRange();
+                                            range.setStartAfter(lastNode);
+                                            range.setEndAfter(lastNode);
+                                            range.collapse(true);
+                                            sel.removeAllRanges();
+                                            sel.addRange(range);
+                                            }
+                                        }
+                                        this.update({ target:this._children.inp});
+                                        }
+                                    }
+
+                                    keydown(e){
+                                        if( e.keyCode == 13 ){
+                                            e.preventDefault();
+                                            this.putAtCaret(' \n<br>\u200B');
+                                            return false;
+                                        }
+                                    }
+                                    paste(e){
+                                        e.preventDefault();
+                                        var data = (e.clipboardData || window.clipboardData).getData('Text').replace(/\r/g, '').replace(/\n/g, '\n<br />');
+                                        document.execCommand('insertHTML', false, data);
+                                    }
+                                }
+
+                                customElements.define('mini-editor', MiniEditor);
+
+
+
+                                //포스트 수정 시 기존 데이터 뿌림
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const miniEditor = document.querySelector('mini-editor');
+                                    if (miniEditor) {
+                                        const existingData = '포스트 수정 시 기존 내용 데이터 <a href="javascript:;" class="hashtag">#OO</a> <a href="javascript:;" class="hashtag">#OO책방</a>';
+
+                                        console.log(miniEditor.shadowRoot.querySelector('.inp'))
+                                        miniEditor.shadowRoot.querySelector('.inp').innerHTML  = existingData;
+                                        miniEditor.shadowRoot.querySelector('.outp').innerHTML  = existingData;
+                                        miniEditor.shadowRoot.querySelector('.placeholder').style.display = 'none';
+                                    }
+                                });
+                                </script>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">첨부 이미지</div>
+                                <small class="form-hint mt-2">
+                                   *이미지를 선택하고 저장하면  선택된 이미지는 삭제됩니다.
+                                </small>
+                                <!-- 기존에 등록된 이미지가 있을때 노출 -->
+                                <div class="row photo_list">
+                                    <div class="col-lg-4">
+                                        <div class="uploaded_file input-group">
+                                            <label class="form-check m-0">
+                                                <input class="form-check-input" type="checkbox">
+                                                등록된 이미지파일 삭제하기
+                                                (file_name.jpg)
+                                                <div class="photo_images">
+                                                    <div class="item"><img src="../../dist/img/img.jpg" alt=""></div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="uploaded_file input-group">
+                                            <label class="form-check m-0">
+                                                <input class="form-check-input" type="checkbox">
+                                                등록된 이미지파일 삭제하기
+                                                (file_name.jpg)
+                                                <div class="photo_images">
+                                                    <div class="item"><img src="../../dist/img/img.jpg" alt=""></div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="uploaded_file input-group">
+                                            <label class="form-check m-0">
+                                                <input class="form-check-input" type="checkbox">
+                                                등록된 이미지파일 삭제하기
+                                                (file_name.jpg)
+                                                <div class="photo_images">
+                                                    <div class="item"><img src="../../dist/img/img.jpg" alt=""></div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="uploaded_file input-group">
+                                            <label class="form-check m-0">
+                                                <input class="form-check-input" type="checkbox">
+                                                등록된 이미지파일 삭제하기
+                                                (file_name.jpg)
+                                                <div class="photo_images">
+                                                    <div class="item"><img src="../../dist/img/img.jpg" alt=""></div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-4">
+                                <div class="subheader mb-2">해시태그</div>
+                                <div class="input-area keyword-input" id="divKeywords">
+                                    <input type="text" class="form-control" id="txtInput" placeholder="키워드를 입력해주세요"/>
+                                    <div class="keyword_list">
+                                        <p class="keyword">등록된키워드1 <a class="delete" onclick="deleteWord(this)"></a></p>
+                                        <p class="keyword">등록된키워드2 <a class="delete" onclick="deleteWord(this)"></a></p>
+                                        <p class="keyword">등록된키워드3 <a class="delete" onclick="deleteWord(this)"></a></p>
+                                    </div>
+                                </div>
+                                <small class="form-hint mt-2">
+                                    , ; 공백으로 키워드를 구분해주세요.
+                                </small>
+                                <script>
+                                    var allKeywords = ['등록된키워드1','등록된키워드2','등록된키워드3'] //키워드 리스트
+                                    function deleteWord(element){
+                                        var keywordText = $(element).parent('.keyword').text().trim(); // trim()을 사용하여 앞뒤 공백 제거
+                                        var index = allKeywords.indexOf(keywordText)
+                                        if(index !== -1){                                  
+                                            allKeywords.splice(index, 1);
+                                        }
+                                        $(element).parent('.keyword').remove();
+                                        console.log(allKeywords)
+
+                                    }
+
+                                    function addWord(word){
+                                        if(word === undefined || word === '' || word === ' '){
+                                            return;
+                                        }
+                                        
+                                        allKeywords.push(word);
+                                        
+                                        $('.keyword_list').append($('<p class="keyword">' + word + '<a class="delete" onclick="deleteWord(this)"></a></p>'));
+                                        $('#txtInput').val('');
+                                        $('#txtInput').focus();
+                                        console.log(allKeywords)
+                                    }
+
+                                    function addWordFromTextBox(){
+                                        var val = $('#txtInput').val();
+                                        if(val !== undefined && val !== ''){
+                                            addWord(val);
+                                        }
+                                    }
+
+                                    function checkLetter(){
+                                        var val = $('#txtInput').val()
+                                        if(val.length > 0){
+                                            var letter = val.slice(-1);
+                                            if (letter === ',' || letter === ';' || letter === ' ') {
+                                                var word = val.slice(0, -1);
+                                                if (word.length > 0) {
+                                                    addWord(word);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    $('#txtInput').blur(addWordFromTextBox);
+                                    $('#txtInput').keyup(checkLetter);
+                                    $('#divKeywords').click(function(){ 
+                                        $('#txtInput').focus();
+                                    });
+                                </script>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card accordion">
+                    <div class="card-header accordion-header p-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false">
+                            <h3 class="card-title mb-0">신고목록 <strong class="text-primary ">(3)</strong></h3>
+                        </button>
+                    </div>
+
+                    <div id="collapse-2"  class="card-body accordion-collapse collapse  label-control" data-bs-parent="#accordion-example">
+                        <div class="list-btns justify-content-between mb-2">
+                            <div>
+                                <label class="form-check form-check-inline m-2">
+                                    <input class="form-check-input check-all" type="checkbox">
+                                    전체 선택
+                                </label>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-warning">선택 삭제</button>
+                            </div>
+                        </div>
+                        <div class="report_list">
+                            <div class="item">
+                                <label class="form-check form-check-inline m-0">
+                                    <input class="form-check-input" type="checkbox">
+                                </label>
+                                <span>신고자: <a href="javascript:;">user_id</a></span>
+                                <span>신고일시: 2023-01-01 11:11:11</span>
+                            </div>
+                            <div class="item">
+                                <label class="form-check form-check-inline m-0">
+                                    <input class="form-check-input" type="checkbox">
+                                </label>
+                                <span>신고자: <a href="javascript:;">user_id1122</a></span>
+                                <span>신고일시: 2023-01-01 11:11:11</span>
+                            </div>
+                            <div class="item">
+                                <label class="form-check form-check-inline m-0">
+                                    <input class="form-check-input" type="checkbox">
+                                </label>
+                                <span>신고자: <a href="javascript:;">user_id123</a></span>
+                                <span>신고일시: 2023-01-01 11:11:11</span>
+                            </div>
+                            <div class="item">
+                                <label class="form-check form-check-inline m-0">
+                                    <input class="form-check-input" type="checkbox">
+                                </label>
+                                <span>신고자: <a href="javascript:;">use</a></span>
+                                <span>신고일시: 2023-01-01 11:11:11</span>
+                            </div>
+                            <div class="item">
+                                <label class="form-check form-check-inline m-0">
+                                    <input class="form-check-input" type="checkbox">
+                                </label>
+                                <span>신고자: <a href="javascript:;">useaa</a></span>
+                                <span>신고일시: 2023-01-01 11:11:11</span>
+                            </div>
+                            <div class="item">
+                                <label class="form-check form-check-inline m-0">
+                                    <input class="form-check-input" type="checkbox">
+                                </label>
+                                <span>신고자: <a href="javascript:;">user_id</a></span>
+                                <span>신고일시: 2023-01-01 11:11:11</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card accordion">
+                    <div class="card-header accordion-header p-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false">
+                            <h3 class="card-title mb-0">댓글목록 <strong class="text-primary ">(40)</strong></h3>
+                        </button>
+                    </div>
+
+                    <div id="collapse-2"  class="card-body accordion-collapse collapse" data-bs-parent="#accordion-example">
+                        <div class="reply_list">
+                            <div class="item item_hide"><!-- 가림처리된 댓글은 item_hide 클래스 -->
+                                <div class="info">
+                                    <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                    <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                    <span class="date">8시간 전</span>
+                                    <button type="button" class="btn btn-sm fs-5 btn-primary">가림 취소</button>
+                                </div>
+                                <div class="cnt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                </div>
+                                <div class="like">1</div>
+                            </div>
+                            <div class="item">
+                                <div class="info">
+                                    <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                    <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                    <span class="date">8시간 전</span>
+                                    <button type="button" class="btn btn-sm fs-5 btn-warning">가리기</button>
+                                </div>
+                                <div class="cnt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                </div>
+                                <div class="like">1</div>
+                                <button type="button" class="reply_more">2개 댓글 더 보기</button>
+                                <div class="inner">
+                                    <div class="item">
+                                        <div class="info">
+                                            <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                            <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                            <span class="date">8시간 전</span>
+                                            <button type="button" class="btn btn-sm fs-5 btn-primary">가림 취소</button>
+                                        </div>
+                                        <div class="cnt">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                        </div>
+                                        <div class="like">1</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="info">
+                                            <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                            <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                            <span class="date">8시간 전</span>
+                                            <button type="button" class="btn btn-sm fs-5 btn-primary">가림 취소</button>
+                                        </div>
+                                        <div class="cnt">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                        </div>
+                                        <div class="like">1</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="info">
+                                    <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                    <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                    <span class="date">8시간 전</span>
+                                    <button type="button" class="btn btn-sm fs-5 btn-warning">가리기</button>
+                                </div>
+                                <div class="cnt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                </div>
+                                <div class="like">1</div>
+                            </div>
+                            <div class="item">
+                                <div class="info">
+                                    <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                    <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                    <span class="date">8시간 전</span>
+                                    <button type="button" class="btn btn-sm fs-5 btn-warning">가리기</button>
+                                </div>
+                                <div class="cnt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                </div>
+                                <div class="like">1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">부가정보</h3></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">최종수정일</div>
+                                <input type="text" class="form-control" value="2022-22-22 11:11:11" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">최종수정자</div>
+                                <input type="text" class="form-control" value="admin_id" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">등록자</div>
+                                <input type="text" class="form-control" value="admin_id" readonly="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-btns justify-content-between mt-3">
+            <div>
+                <div>
+                    <button type="button" class="btn btn-warning">삭제</button>
+                </div>
+            </div>
+            <div>
+                <a href="./room.html" class="btn btn-secondary">목록</a>
+                <button type="button" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="modal modal-blur fade" id="roomManager" tabindex="-1" role="dialog" aria-hidden="true"
+    data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">방장 검색</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-header fs-4">검색</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">이름</div>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">닉네임</div>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">휴대폰번호</div>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary w-100">검색</button>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="btn btn-secondary w-100">검색 초기화</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-header fs-4">검색 결과</div>
+                    <div class="card-body card-pc-pd0">
+                        <div class="table-responsive">
+                            <table class="table table-vcenter card-table text-center table-mb">
+                                <thead>
+                                    <tr>
+                                        <th>아이디</th>
+                                        <th>닉네임</th>
+                                        <th>휴대폰번호</th>
+                                        <th>회원등급</th>
+                                        <th>회원상태</th>
+                                        <th>등록</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" class="list-empty sm">
+                                            내역이 존재하지 않습니다.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="tm_tit">아이디</span><span class="tm_cnt"><a href="./member_detail.html" target="_blank" class="link">user_id</a></span></td>
+                                        <td><span class="tm_tit">닉네임</span><span class="tm_cnt"><a href="./member_detail.html" target="_blank" class="link">아무개</a></span></td>
+                                        <td><span class="tm_tit">휴대폰번호</span><span class="tm_cnt">010-1234-1234</span></td>
+                                        <td><span class="tm_tit">회원등급</span><span class="tm_cnt">평생회원</span></td>
+                                        <td><span class="tm_tit">회원상태</span><span class="tm_cnt">승인</span></td>
+                                        <td>
+                                            <span class="tm_tit">등록</span>
+                                            <span class="tm_cnt"><button type="button" class="btn btn-sm fs-5 btn-primary">등록</button></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="tm_tit">아이디</span><span class="tm_cnt"><a href="./member_detail.html" target="_blank" class="link">user_id</a></span></td>
+                                        <td><span class="tm_tit">닉네임</span><span class="tm_cnt"><a href="./member_detail.html" target="_blank" class="link">아무개</a></span></td>
+                                        <td><span class="tm_tit">휴대폰번호</span><span class="tm_cnt">010-1234-1234</span></td>
+                                        <td><span class="tm_tit">회원등급</span><span class="tm_cnt">일반회원</span></td>
+                                        <td><span class="tm_tit">회원상태</span><span class="tm_cnt">정지</span></td>
+                                        <td>
+                                            <span class="tm_tit">등록</span>
+                                            <span class="tm_cnt"><button type="button" class="btn btn-sm fs-5 btn-primary">등록</button></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="tm_tit">아이디</span><span class="tm_cnt"><a href="./member_detail.html" target="_blank" class="link">user_id</a></span></td>
+                                        <td><span class="tm_tit">닉네임</span><span class="tm_cnt"><a href="./member_detail.html" target="_blank" class="link">아무개</a></span></td>
+                                        <td><span class="tm_tit">휴대폰번호</span><span class="tm_cnt">010-1234-1234</span></td>
+                                        <td><span class="tm_tit">회원등급</span><span class="tm_cnt">평생회원</span></td>
+                                        <td><span class="tm_tit">회원상태</span><span class="tm_cnt">승인</span></td>
+                                        <td>
+                                            <span class="tm_tit">등록</span>
+                                            <span class="tm_cnt"><button type="button" class="btn btn-sm fs-5 btn-primary">등록</button></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="display-flex justify-content-center">
+                            <ul class="pagination mt-4">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevrons-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M11 7l-5 5l5 5"></path>
+                                            <path d="M17 7l-5 5l5 5"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M15 6l-6 6l6 6"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M9 6l6 6l-6 6"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevrons-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M7 7l5 5l-5 5"></path>
+                                            <path d="M13 7l5 5l-5 5"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

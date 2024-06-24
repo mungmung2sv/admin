@@ -1,0 +1,212 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 설정 > 관리자목록
+                </div>
+                <h2 class="page-title">
+                    관리자목록
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row row-cards">
+
+            <!-- 검색시작 -->
+            <div class="col-lg-3 aside-search" id="asideSearch">
+                <form action="" class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="subheader mb-2">상태</div>
+                            <select class="form-select mb-1">
+                                <option value="">선택</option>
+                                <option value="승인">승인</option>
+                                <option value="정지">정지</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">검색</div>
+                            <select class="form-select mb-1">
+                                <option value="아이디" selected>아이디</option>
+                                <option value="이름">이름</option>
+                                <option value="휴대폰번호">휴대폰번호</option>
+                            </select>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn btn-primary w-100">
+                                검색
+                            </button>
+                            <a href="#" class="btn btn-secondary w-100 mt-1">
+                                검색 초기화
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="aside-open" id="asideOpen">목록 검색</button>
+            </div>
+            <!-- //검색시작 -->
+
+
+            <!-- 콘텐츠 시작 -->
+            <div class="col-lg-9 content-area">
+                <form action="">
+                    <div class="list-btns justify-content-between mb-3">
+                        <div>
+                            <a href="./admin_add.html" class="btn btn-primary">관리자 등록</a>
+                        </div>
+                        <div>
+                            <select class="form-select ms-1 float-start w-auto">
+                                <option selected>등록일 역순 ⬆</option>
+                                <option>등록일 순 ⬇</option>
+                                <option>수정일 역순⬆</option>
+                                <option>수정일 순 ⬇</option>
+                                <option>접속일 역순⬆</option>
+                                <option>접속일 순 ⬇</option>
+                            </select>
+                            <select class="form-select ms-1 float-start w-auto">
+                                <option selected>20개씩 보기</option>
+                                <option>30개씩 보기</option>
+                                <option>50개씩 보기</option>
+                                <option>100개씩 보기</option>
+                                <option>200개씩 보기</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="card table-mb-card">
+                        <div class="table-responsive">
+                            <table class="table table-vcenter card-table text-center table-mb">
+                                <thead>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>아이디</th>
+                                        <th>이름</th>
+                                        <th>휴대폰번호</th>
+                                        <th>상태</th>
+                                        <th>등록일</th>
+                                        <th>최종접속일</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" class="list-empty">
+                                            내역이 존재하지 않습니다.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="tm_tit">번호</span><span class="tm_cnt">20</span></td>
+                                        <td><span class="tm_tit">아이디</span><span class="tm_cnt"><a href="./admin_detail.html" class="link">admin1</a></span></td>
+                                        <td><span class="tm_tit">이름</span><span class="tm_cnt"><a href="./admin_detail.html" class="link">홍길동</a></span></td>
+                                        <td><span class="tm_tit">휴대폰번호</span><span class="tm_cnt">010-1234-1234</span></td>
+                                        <td><span class="tm_tit">상태</span><span class="tm_cnt">승인</span></td>
+                                        <td><span class="tm_tit">등록일</span><span class="tm_cnt">2022-12-22 11:11</span></td>
+                                        <td><span class="tm_tit">최종접속일</span><span class="tm_cnt">2022-12-22 11:11</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="tm_tit">번호</span><span class="tm_cnt">20</span></td>
+                                        <td><span class="tm_tit">아이디</span><span class="tm_cnt"><a href="./admin_detail.html" class="link">admin1</a></span></td>
+                                        <td><span class="tm_tit">이름</span><span class="tm_cnt"><a href="./admin_detail.html" class="link">홍길동</a></span></td>
+                                        <td><span class="tm_tit">휴대폰번호</span><span class="tm_cnt">010-1234-1234</span></td>
+                                        <td><span class="tm_tit">상태</span><span class="tm_cnt">승인</span></td>
+                                        <td><span class="tm_tit">등록일</span><span class="tm_cnt">2022-12-22 11:11</span></td>
+                                        <td><span class="tm_tit">최종접속일</span><span class="tm_cnt">2022-12-22 11:11</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="tm_tit">번호</span><span class="tm_cnt">20</span></td>
+                                        <td><span class="tm_tit">아이디</span><span class="tm_cnt"><a href="./admin_detail.html" class="link">admin1</a></span></td>
+                                        <td><span class="tm_tit">이름</span><span class="tm_cnt"><a href="./admin_detail.html" class="link">홍길동</a></span></td>
+                                        <td><span class="tm_tit">휴대폰번호</span><span class="tm_cnt">010-1234-1234</span></td>
+                                        <td><span class="tm_tit">상태</span><span class="tm_cnt">승인</span></td>
+                                        <td><span class="tm_tit">등록일</span><span class="tm_cnt">2022-12-22 11:11</span></td>
+                                        <td><span class="tm_tit">최종접속일</span><span class="tm_cnt">2022-12-22 11:11</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="tm_tit">번호</span><span class="tm_cnt">20</span></td>
+                                        <td><span class="tm_tit">아이디</span><span class="tm_cnt"><a href="./admin_detail.html" class="link">admin1</a></span></td>
+                                        <td><span class="tm_tit">이름</span><span class="tm_cnt"><a href="./admin_detail.html" class="link">홍길동</a></span></td>
+                                        <td><span class="tm_tit">휴대폰번호</span><span class="tm_cnt">010-1234-1234</span></td>
+                                        <td><span class="tm_tit">상태</span><span class="tm_cnt">승인</span></td>
+                                        <td><span class="tm_tit">등록일</span><span class="tm_cnt">2022-12-22 11:11</span></td>
+                                        <td><span class="tm_tit">최종접속일</span><span class="tm_cnt">2022-12-22 11:11</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form> 
+
+                <div class="display-flex justify-content-center">
+                    <ul class="pagination mt-4">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevrons-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M11 7l-5 5l5 5"></path>
+                                    <path d="M17 7l-5 5l5 5"></path>
+                                 </svg>
+                            </a>
+                        </li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M15 6l-6 6l6 6"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M9 6l6 6l-6 6"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevrons-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M7 7l5 5l-5 5"></path>
+                                    <path d="M13 7l5 5l-5 5"></path>
+                                 </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 콘텐츠 끝 -->
+        </div>
+    </div>
+</div>
+
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

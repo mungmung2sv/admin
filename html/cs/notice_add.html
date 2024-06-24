@@ -1,0 +1,212 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 고객센터 > 공지사항 > 공지사항 등록
+                </div>
+                <h2 class="page-title">
+                    공지사항 등록
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <form action="">
+        <div class="list-btns justify-content-end mb-3">
+            <div>
+                <a href="./notice.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">공지</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <span class="form-check-label">상단고정</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2 required">제목</div>
+                                <div class="input-group">
+                                    <input class="form-control max-text" id="" maxlength="20" type="text" name="" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text max-len"><b>0</b> / 20</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2 required">내용</div>
+                                <textarea name="" id="" class="form-control"></textarea>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">첨부파일</div>
+                                <div class="file_upload_wrap">
+                                    <div class="file_upload_btn file">
+                                        <label><input type="file" id="fileInput" multiple>첨부파일 업로드하기</label>
+                                    </div>
+                                    <div class="file_upload_list" id="fileList">
+                                        <!-- <div class="item" title="파일이름.확장자">
+                                            <input type="file" class="input_file">
+                                            <input type="text" class="input_index">
+                                            <span class="num">1</span>
+                                            <span class="filename">file_name.pdf</span>
+                                            <button type="button" class="file_remove">삭제</button>
+                                        </div>
+                                        <div class="item">
+                                            <input type="file" class="input_file">
+                                            <input type="text" class="input_index">
+                                            <span class="num">2</span>
+                                            <span class="filename">file_name.zip</span>
+                                            <button type="button" class="file_remove">삭제</button>
+                                        </div>-->
+                                    </div>
+                                </div>
+                                <script>
+                                $(document).ready(function () {
+                                    const fileList = document.getElementById("fileList");
+                                    let uploadedFiles = []; // 저장된 파일 데이터
+
+                                    // 기존 파일 정보를 서버에서 가져옴  //등록페이지에서는 필요하지 않고 상세페이지에서 기존에 등록된 파일이 있을때 json으로 불러오면됨
+                                    const existingImagesData = [
+                                        //{ name: "file_name.zip", path: "../../dist/img/img.jpg" },
+                                        //{ name: "img2.jpg", path: "../../dist/img/img2.jpg" },
+                                        // 추가 파일 정보
+                                    ];
+
+                                    // 기존 파일 정보를 uploadedFiles 배열에 추가하고 화면에 표시
+                                    existingImagesData.forEach((imageData, index) => {
+                                        const item = `
+                                            <div class="item" title="${imageData.name}">
+                                                <span class="num">${index + 1}</span>
+                                                <span class="filename">${imageData.name}</span>
+                                                <button type="button" class="file_remove">삭제</button>
+                                            </div>
+                                        `;
+
+                                        $(fileList).append(item);
+                                        uploadedFiles.push(imageData); // 파일 정보를 배열에 저장
+                                    });
+
+                                    // 파일 선택 시
+                                    $("#fileInput").change(function () {
+                                        const files = [...$(this)[0].files];
+
+                                        for (let i = 0; i < files.length; i++) {
+                                            const file = files[i];
+                                            const isFileInArray = uploadedFiles.some(existingFile => existingFile.name === file.name);
+                                            if (!isFileInArray) {
+                                                const reader = new FileReader();
+
+                                                reader.onload = function (e) {
+                                                    const item = `
+                                                        <div class="item" title="${file.name}">
+                                                            <span class="num">${uploadedFiles.length + 1}</span>
+                                                            <span class="filename">${file.name}</span>
+                                                            <button type="button" class="file_remove">삭제</button>
+                                                        </div>
+                                                    `;
+                                                    $(fileList).append(item);
+                                                    uploadedFiles.push(file); // 파일을 배열에 저장
+                                                    updateFileOrder();
+                                                };
+
+                                                reader.readAsDataURL(file);
+                                            }
+                                        }
+                                    });
+
+                                    // 드래그 앤 드롭으로 순서 변경
+                                    $(fileList).sortable({
+                                        items: ".item",
+                                        update: function (event, ui) {
+                                            updateFileOrder(); // 파일 순서 업데이트
+                                        },
+                                    });
+
+                                    // 파일 삭제
+                                    $(fileList).on("click", ".file_remove", function () {
+                                        const itemIndex = $(this).parent().index();
+                                        $(this).parent().remove();
+                                        updateFileOrder(); // 파일 순서 업데이트
+                                    });
+
+                                    // 파일 순서 업데이트
+                                    function updateFileOrder() {
+                                        const items = $(fileList).find(".item");
+
+                                        // 업데이트된 배열 초기화
+                                        const newUploadedFiles = new Array(items.length);
+
+                                        items.each(function (index) {
+                                            const num = $(this).find(".num");
+                                            const fileIndex = parseInt(num.text()) - 1;
+                                            newUploadedFiles[index] = uploadedFiles[fileIndex];
+                                            num.text(index + 1);
+                                        });
+
+                                        uploadedFiles = newUploadedFiles; // 업데이트된 배열로 교체
+                                    }
+
+                                    // 파일 정보 확인
+                                     $('.aaaaaa').click(function(){
+                                         console.log("저장된 파일 확인:", uploadedFiles);
+                                     });
+                                });
+                                </script>
+                                <button type="button" class="aaaaaa">업로드된 파일 확인</button>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2 required">상태</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="wtDisplay" >
+                                        <span class="form-check-label">노출함</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="wtDisplay">
+                                        <span class="form-check-label">노출안함</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-btns justify-content-end mt-3">
+            <div>
+                <a href="./notice.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

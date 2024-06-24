@@ -1,0 +1,1235 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-sm-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="subheader">매출금액</div>
+                            <div class="ms-auto lh-1">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">24-02월</a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item active" href="#">24-02월</a>
+                                        <a class="dropdown-item" href="#">24-01월</a>
+                                        <a class="dropdown-item" href="#">23-12월</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="h1 mb-0 me-2">￦4,000,000</div>
+                            <div class="d-flex align-items-baseline">
+                                <div class="text-secondary small me-2">전달 기준 대비</div>
+                                <span class="text-green d-inline-flex align-items-center lh-1">
+                                8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l6 -6l4 4l8 -8" /><path d="M14 7l7 0l0 7" /></svg>
+                                </span>
+
+                                <span class="text-yellow d-inline-flex align-items-center lh-1">
+                                0% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
+                                </span>
+
+                                <span class="text-red d-inline-flex align-items-center lh-1">
+                                -10% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trending-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7l6 6l4 -4l8 8" /><path d="M21 10l0 7l-7 0" /></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div id="chart-revenue-bg" class="chart-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="subheader">신규회원</div>
+                            <div class="ms-auto lh-1">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">최근 1달</a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item active" href="#">최근 1달</a>
+                                        <a class="dropdown-item" href="#">최근 2달</a>
+                                        <a class="dropdown-item" href="#">최근 3달</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="h1 mb-0 me-2">6,782</div>
+                            <div class="d-flex align-items-baseline">
+                                <div class="text-secondary small me-2">지난 1달 기준 대비</div>
+                                <span class="text-green d-inline-flex align-items-center lh-1">
+                                8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l6 -6l4 4l8 -8" /><path d="M14 7l7 0l0 7" /></svg>
+                                </span>
+
+                                <span class="text-yellow d-inline-flex align-items-center lh-1">
+                                0% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
+                                </span>
+
+                                <span class="text-red d-inline-flex align-items-center lh-1">
+                                -10% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trending-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7l6 6l4 -4l8 8" /><path d="M21 10l0 7l-7 0" /></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="chart-new-clients" class="chart-sm"></div>
+
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="subheader">포스트 게시글</div>
+                            <div class="ms-auto lh-1">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">최근 1달</a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item active" href="#">최근 1달</a>
+                                        <a class="dropdown-item" href="#">최근 2달</a>
+                                        <a class="dropdown-item" href="#">최근 3달</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="h1 mb-0 me-2">687</div>
+                                <div class="d-flex align-items-baseline">
+                                <div class="text-secondary small me-2">지난 1달 기준 대비</div>
+                                <span class="text-green d-inline-flex align-items-center lh-1">
+                                8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l6 -6l4 4l8 -8" /><path d="M14 7l7 0l0 7" /></svg>
+                                </span>
+
+                                <span class="text-yellow d-inline-flex align-items-center lh-1">
+                                0% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
+                                </span>
+
+                                <span class="text-red d-inline-flex align-items-center lh-1">
+                                -10% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trending-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7l6 6l4 -4l8 8" /><path d="M21 10l0 7l-7 0" /></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div id="chart-active-users" class="chart-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">최근 트래픽</h3>
+                        <div id="chart-mentions" class="chart-lg"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">가장 많이 방문한 페이지</h3>
+                    </div>
+                    <div class="card-table table-responsive">
+                        <table class="table table-vcenter">
+                        <thead>
+                        <tr>
+                            <th>페이지명</th>
+                            <th>방문자수</th>
+                            <th>이탈율</th>
+                            <th>최근 1주</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td>
+                                /
+                                <a href="#" class="ms-1" aria-label="Open website"><!-- Download SVG icon from http://tabler-icons.io/i/link -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
+                                </a>
+                            </td>
+                            <td class="text-muted">4,896</td>
+                            <td class="text-muted">82.54%</td>
+                            <td class="text-end w-1">
+                                <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-1"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                /form-elements.html
+                                <a href="#" class="ms-1" aria-label="Open website"><!-- Download SVG icon from http://tabler-icons.io/i/link -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
+                                </a>
+                            </td>
+                            <td class="text-muted">3,652</td>
+                            <td class="text-muted">76.29%</td>
+                            <td class="text-end w-1">
+                                <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-2"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                /index.html
+                                <a href="#" class="ms-1" aria-label="Open website"><!-- Download SVG icon from http://tabler-icons.io/i/link -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
+                                </a>
+                            </td>
+                            <td class="text-muted">3,256</td>
+                            <td class="text-muted">72.65%</td>
+                            <td class="text-end w-1">
+                                <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-3"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                /icons.html
+                                <a href="#" class="ms-1" aria-label="Open website"><!-- Download SVG icon from http://tabler-icons.io/i/link -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
+                                </a>
+                            </td>
+                            <td class="text-muted">986</td>
+                            <td class="text-muted">44.89%</td>
+                            <td class="text-end w-1">
+                                <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-4"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                /docs/
+                                <a href="#" class="ms-1" aria-label="Open website"><!-- Download SVG icon from http://tabler-icons.io/i/link -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
+                                </a>
+                            </td>
+                            <td class="text-muted">912</td>
+                            <td class="text-muted">41.12%</td>
+                            <td class="text-end w-1">
+                                <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-5"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                /accordion.html
+                                <a href="#" class="ms-1" aria-label="Open website"><!-- Download SVG icon from http://tabler-icons.io/i/link -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
+                                </a>
+                            </td>
+                            <td class="text-muted">855</td>
+                            <td class="text-muted">32.65%</td>
+                            <td class="text-end w-1">
+                                <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-6"></div>
+                            </td>
+                        </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">최근 포스트</h3>
+                        <div class="divide-y">
+                            <div>
+                                <a href="javascript:;" class="row">
+                                <div class="col-auto">
+                                    <span class="avatar" style="background-image: url(https://i.pravatar.cc/60?9)"></span>
+                                </div>
+                                <div class="col">
+                                    <div class="text-truncate text-dark">
+                                        OO이야기 OO이야기 OO이야기 <span class="hashtag">#OO</span><span class="hashtag">#책방</span>
+                                    </div>
+                                    <div class="text-muted">02.02 12:11</div>
+                                </div>
+                                <div class="col-auto align-self-center">
+                                    <span class="avatar" style="background-image: url(https://picsum.photos/200)">
+                                    <div class="bg-dark text-dark-fg small px-2 badge">2</div>
+                                    </span>
+                                </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="javascript:;" class="row">
+                                <div class="col-auto">
+                                    <span class="avatar" style="background-image: url(https://i.pravatar.cc/60?1)"></span>
+                                </div>
+                                <div class="col">
+                                    <div class="text-truncate text-dark">
+                                        OO이야기 OO이야기 OO이야기 <span class="hashtag">#OO</span><span class="hashtag">#책방</span>
+                                    </div>
+                                    <div class="text-muted">02.02 12:11</div>
+                                </div>
+                                <div class="col-auto align-self-center">
+                                    <span class="avatar" style="background-image: url(https://picsum.photos/200?2)"></span>
+                                </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="javascript:;" class="row">
+                                <div class="col-auto">
+                                    <span class="avatar" style="background-image: url(https://i.pravatar.cc/60?2)"></span>
+                                </div>
+                                <div class="col">
+                                    <div class="text-truncate text-dark">
+                                        OO이야기 OO이야기 OO이야기 <span class="hashtag">#OO</span><span class="hashtag">#책방</span>
+                                    </div>
+                                    <div class="text-muted">02.02 12:11</div>
+                                </div>
+                                <div class="col-auto align-self-center">
+                                    <span class="avatar" style="background-image: url(https://picsum.photos/200?3)">
+                                    <div class="bg-dark text-dark-fg small px-2 badge">4</div>
+                                    </span>
+                                </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="javascript:;" class="row">
+                                <div class="col-auto">
+                                    <span class="avatar" style="background-image: url(https://i.pravatar.cc/60?3)"></span>
+                                </div>
+                                <div class="col">
+                                    <div class="text-truncate text-dark">
+                                        OO이야기 OO이야기 OO이야기 <span class="hashtag">#OO</span><span class="hashtag">#책방</span>
+                                    </div>
+                                    <div class="text-muted">02.02 12:11</div>
+                                </div>
+                                <div class="col-auto align-self-center">
+                                    <span class="avatar" style="background-image: url(https://picsum.photos/200?4)"></span>
+                                </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="javascript:;" class="row">
+                                <div class="col-auto">
+                                    <span class="avatar" style="background-image: url(https://i.pravatar.cc/60?4)"></span>
+                                </div>
+                                <div class="col">
+                                    <div class="text-truncate text-dark">
+                                        OO이야기 OO이야기 OO이야기 <span class="hashtag">#OO</span><span class="hashtag">#책방</span>
+                                    </div>
+                                    <div class="text-muted">02.02 12:11</div>
+                                </div>
+                                <div class="col-auto align-self-center">
+                                    <span class="avatar" style="background-image: url(https://picsum.photos/200?5)"></span>
+                                </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="javascript:;" class="row">
+                                <div class="col-auto">
+                                    <span class="avatar" style="background-image: url(https://i.pravatar.cc/60?5)"></span>
+                                </div>
+                                <div class="col">
+                                    <div class="text-truncate text-dark">
+                                        OO이야기 OO이야기 OO이야기 <span class="hashtag">#OO</span><span class="hashtag">#책방</span>
+                                    </div>
+                                    <div class="text-muted">02.02 12:11</div>
+                                </div>
+                                <div class="col-auto align-self-center">
+                                    <span class="avatar" style="background-image: url(https://picsum.photos/200?6)"></span>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">해시태그</h3>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="hash_list">
+                                    <div class="item"><span>#OO</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#홍길동</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#책방</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#OO이야기</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#대방어</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#소방어</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#중방어</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#123</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#aa</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#쥐치</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#123</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#124</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#OO</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#OO</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#OO</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#OO</span><strong>2340건</strong></div>
+                                    <div class="item"><span>#OO</span><strong>2340건</strong></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div id="chart" class="chart"></div>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.8/d3.min.js"></script>
+                                <script src="https://d3js.org/d3-hierarchy.v1.min.js"></script>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.19.0/d3-legend.js"></script>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+                                <script>
+                                render();
+                                function render() {
+                                let idx = 0;
+                                const limit = 45;
+                                document.querySelector('#chart').innerHTML = '';
+                                var json = {
+                                    'children': [
+                                        {name: '#OO', value: 50},
+                                        {name: '#OO책방', value: 42},
+                                        {name: '#admin ', value: 38},
+                                        {name: '#홍길동', value: 33},
+                                        {name: '#문문문', value: 32},
+                                        {name: '#aaa', value: 26},
+                                        {name: '#qwe', value: 22},
+                                        {name: '#123', value: 21},
+                                        {name: '#OO이야기', value: 17},
+                                        {name: '#책', value: 15},
+                                        {name: '#문어', value: 13},
+                                        {name: '#대방어', value: 33},
+                                        {name: '#소방어', value: 23},
+                                        {name: '#중방어', value: 13},
+                                        {name: '#xs방어', value: 10},
+                                        {name: '#특대방어', value: 9},
+                                        {name: '#특특대방어', value: 8},
+                                        {name: '#특특특대방어', value: 7},
+                                        {name: '#쥐치', value: 6},
+                                        {name: '#오징어', value: 6},
+                                        {name: '#삼치', value: 6},
+                                        {name: '#참치', value: 5},
+                                        {name: '#참다랑어', value: 4},
+                                        {name: '#가다랑어', value: 4},
+                                        {name: '#황새치', value: 4},
+                                        {name: '#연어', value: 4},
+                                        {name: '#눈다랑어', value: 3},
+                                        {name: '#쭈꾸미', value: 3},
+                                        {name: '#도다리', value: 3},
+                                        {name: '#한우', value: 2},
+                                        {name: '#살치살', value: 1},
+                                        {name: '#특대방어12', value: 9},
+                                        {name: '#특특대방어123', value: 8},
+                                        {name: '#특특특대방어123', value: 7},
+                                        {name: '#쥐치123', value: 6},
+                                        {name: '#오징어qwe', value: 6},
+                                        {name: '#삼치qwe', value: 6},
+                                        {name: '#참치qwe', value: 5},
+                                        {name: '#참다랑어asd', value: 4},
+                                        {name: '#가다랑어qwe', value: 4},
+                                        {name: '#황새치qwe', value: 4},
+                                        {name: '#연어123', value: 4},
+                                        {name: '#눈다랑어qwe', value: 3},
+                                        {name: '#쭈꾸미asd', value: 3},
+                                        {name: '#도다리asd', value: 3},
+                                        {name: '#한우qwe', value: 2},
+                                        {name: '#살치살123', value: 1},
+                                    ].slice(0, limit)
+                                }
+                                    json.children = _.shuffle(json.children);
+                                    const values = json.children.map(d => d.value);
+                                    const min = Math.min.apply(null, values);
+                                    const max = Math.max.apply(null, values);
+                                    const total = json.children.length;
+                                    var diameter = 600,
+                                    color = d3.scaleOrdinal(d3.schemeCategory20c);
+                                    var bubble = d3.pack()
+                                    .size([diameter, diameter])
+                                    .padding(10);
+
+                                    var tip = d3.tip()
+                                    .attr('class', 'd3-tip-outer')
+                                    .offset([-14, 0])
+                                    .html((d, i) => {
+                                    const item = json.children[i];
+                                    const color = getColor(i, values.length);
+                                    return `<div class="d3-tip" style="background-color: ${color}">${item.name} (${item.value})</div><div class="d3-stem" style="border-color: ${color} transparent transparent transparent"></div>`;
+                                    })
+                                    ;
+                                    var margin = {
+                                        left: 25,
+                                        right: 25,
+                                        top: 25,
+                                        bottom: 25
+                                    }
+
+                                    var svg = d3.select('#chart').append('svg')
+                                    .attr('viewBox','0 0 ' + (diameter + margin.right) + ' ' + diameter)
+                                    .attr('width', (diameter + margin.right))
+                                    .attr('height', diameter)
+                                    .attr('class', 'chart-svg');
+
+                                    var root = d3.hierarchy(json)
+                                    .sum(function(d) { return d.value; });
+                                    // .sort(function(a, b) { return b.value - a.value; });
+
+                                    bubble(root);
+
+                                    var node = svg.selectAll('.node')
+                                    .data(root.children)
+                                    .enter()
+                                    .append('g').attr('class', 'node')
+                                    .attr('transform', function(d) { return 'translate(' + d.x + ' ' + d.y + ')'; })
+                                    .append('g').attr('class', 'graph');
+
+                                    node.append("circle")
+                                    .attr("r", function(d) { return d.r; })
+                                    .style("fill", getItemColor)
+                                    .on('mouseover', tip.show)
+                                    .on('mouseout', tip.hide);
+
+                                    node.call(tip);
+                                    node.append("text")
+                                    .attr("dy", "0.2em")
+                                    .style("text-anchor", "middle")
+                                    .style('font-family', 'Roboto')
+                                    .style('font-size', getFontSizeForItem)
+                                    .text(getLabel)
+                                    .style("fill", "#ffffff")
+                                    .style('pointer-events', 'none');
+
+                                    node.append("text")
+                                    .attr("dy", "1.3em")
+                                    .style("text-anchor", "middle")
+                                    .style('font-family', 'Roboto')
+                                    .style('font-weight', '100')
+                                    .style('font-size', getFontSizeForItem)
+                                    .text(getValueText)
+                                    .style("fill", "#ffffff")
+                                    .style('pointer-events', 'none');
+                                    function getItemColor(item) {
+                                        return getColor(idx++, json.children.length);
+                                    }
+                                    function getColor(idx, total) {
+                                        const colorList = ['F05A24', 'EF4E4A', 'EE3F65', 'EC297B', 'E3236C', 'D91C5C', 'BC1E60', '9E1F63', '992271', '952480', '90278E', '7A2A8F', '652D90', '502980', '3B2671', '262261', '27286D', '292D78', '2A3384', '2B388F', '2A4F9F', '2965AF', '277CC0', '2692D0', '25A9E0'];
+                                        // 색상 리스트에서 순환하며 색상을 선택
+                                        return '#' + colorList[idx % colorList.length];
+                                    }
+                                    function getLabel(item) {
+                                        if (item.data.value < max / 3.3) {
+                                            return '';
+                                        }
+                                        return truncate(item.data.name);
+                                    }
+                                    function getValueText(item) {
+                                        if (item.data.value < max / 3.3) {
+                                            return '';
+                                        }
+                                        return item.data.value;
+                                    }
+                                    function truncate(label) {
+                                        const max = 11;
+                                        if (label.length > max) {
+                                            label = label.slice(0, max) + '...';
+                                        }
+                                        return label;
+                                    }
+                                    function getFontSizeForItem(item) {
+                                        return getFontSize(item.data.value, min, max, total);
+                                    }
+                                    function getFontSize(value, min, max, total) {
+                                        const minPx = 6;
+                                        const maxPx = 25;
+                                        const pxRange = maxPx - minPx;
+                                        const dataRange = max - min;
+                                        const ratio = pxRange / dataRange;
+                                        const size = Math.min(maxPx, Math.round(value * ratio) + minPx);
+                                        return `${
+                                            size}
+                                        px`;
+                                    }
+                                }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="#" class="card-title">신규회원</a>
+                        <div class="list-group list-group-flush lst-qna">
+                            <!-- 승인 text-success ,  대기 text-muted-->
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-9">
+                                    <span
+                                    class="btn btn-sm w-5 fs-5 text-light me-2 lst_state float-start btn-muted">
+                                    대기
+                                    </span>
+                                    <span class="subject mt float-start">user_id</span>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <span class="text-secondary float-end">20.22.22</span>
+                                </div>
+                            </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-9">
+                                    <span
+                                    class="btn btn-sm w-5 fs-5 text-light me-2 lst_state float-start btn-muted">
+                                    대기
+                                    </span>
+                                    <span class="subject mt float-start">user_id</span>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <span class="text-secondary float-end">20.22.22</span>
+                                </div>
+                            </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-9">
+                                    <span
+                                    class="btn btn-sm w-5 fs-5 text-light me-2 lst_state float-start btn-primary">
+                                    승인
+                                    </span>
+                                    <span class="subject mt float-start">user_id</span>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <span class="text-secondary float-end">20.22.22</span>
+                                </div>
+                            </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-9">
+                                    <span
+                                    class="btn btn-sm w-5 fs-5 text-light me-2 lst_state float-start btn-primary">
+                                    승인
+                                    </span>
+                                    <span class="subject mt float-start">user_id</span>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <span class="text-secondary float-end">20.22.22</span>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="#" class="card-title">탈퇴회원</a>
+                        <div class="list-group list-group-flush lst-notice">
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <span class="subject">user_id</span>
+                            <span class="text-secondary float-end">20.22.22</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <span class="subject">user_id</span>
+                            <span class="text-secondary float-end">20.22.22</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <span class="subject">user_id</span>
+                            <span class="text-secondary float-end">20.22.22</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <span class="subject">user_id</span>
+                            <span class="text-secondary float-end">20.22.22</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="#" class="card-title">최근 공지사항</a>
+                        <div class="list-group list-group-flush lst-notice">
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <span class="subject">[공지]공지사항 제목이 표기됩니다공지]공지사항 제목이 표기됩니다</span>
+                            <span class="text-secondary float-end">20.22.22</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <span class="subject">[공지]공지사항 제목이 표기됩니다</span>
+                            <span class="text-secondary float-end">20.22.22</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <span class="subject">[공지]공지사항 제목이 표기됩니다</span>
+                            <span class="text-secondary float-end">20.22.22</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <span class="subject">[공지]공지사항 제목이 표기됩니다</span>
+                            <span class="text-secondary float-end">20.22.22</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="#" class="card-title">최근 1:1문의</a>
+                        <div class="list-group list-group-flush lst-qna">
+                            <!-- 승인 text-success ,  대기 text-muted-->
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-9">
+                                    <span
+                                    class="btn btn-sm w-5 fs-5 text-light me-2 lst_state float-start btn-muted">
+                                    대기
+                                    </span>
+                                    <span class="subject mt float-start">1:1문의 제목이 표기됩니다1:1문의 제목이 표기됩니다</span>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <span class="text-secondary float-end">20.22.22</span>
+                                </div>
+                            </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-9">
+                                    <span
+                                    class="btn btn-sm w-5 fs-5 text-light me-2 lst_state float-start btn-muted">
+                                    대기
+                                    </span>
+                                    <span class="subject float-start">1:1문의 제목이 표기됩니다</span>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <span class="text-secondary float-end">20.22.22</span>
+                                </div>
+                            </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-9">
+                                    <span
+                                    class="btn btn-sm w-5 fs-5 text-light me-2 lst_state float-start btn-primary">
+                                    승인
+                                    </span>
+                                    <span class="subject float-start">1:1문의 제목이 표기됩니다</span>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <span class="text-secondary float-end">20.22.22</span>
+                                </div>
+                            </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-9">
+                                    <span
+                                    class="btn btn-sm w-5 fs-5 text-light me-2 lst_state float-start btn-primary">
+                                    승인
+                                    </span>
+                                    <span class="subject float-start">1:1문의 제목이 표기됩니다</span>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <span class="text-secondary float-end">20.22.22</span>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    // 매출금액
+    document.addEventListener("DOMContentLoaded", function () {
+        const price = [];
+        for(var i=0; i < 4; i++){
+            price.push(i + 30)
+            console.log(price)
+        }
+        window.ApexCharts && (new ApexCharts(document.getElementById('chart-revenue-bg'), {
+            chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 40.0,
+            sparkline: {
+                enabled: true
+            },
+<<<<<<< HEAD
+            dataLabels: {
+                enabled: false,
+            },
+            fill: {
+                opacity: [.3, .1],
+                type: 'solid'
+            },
+            stroke: {
+                width: [2, 1],
+                dashArray: [0, 3],
+                lineCap: "round",
+                curve: "smooth",
+=======
+            animations: {
+                enabled: false
+>>>>>>> 45f6520646aed558cadf7d88c3e6d5b8a53591a1
+            },
+        },
+        fill: {
+            opacity: 1,
+        },
+        stroke: {
+            width: [2, 1],
+            dashArray: [0, 3],
+            lineCap: "round",
+            curve: "smooth",
+        },
+            series: [{
+<<<<<<< HEAD
+                name: "매출금액",
+                data: price
+            },{
+                name: "매출금액123",
+                data: [22, 44, 55, 22]
+=======
+                name: "매출금액1",
+                data: [37, 35, 44, 28, 36, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46, 39, 62, 51, 35, 41, 67]
+            },{
+                name: "매출금액2",
+                data: [12,37, 35, 44, 28, 36, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46, 39, 62, 51, 35, 41]
+>>>>>>> 45f6520646aed558cadf7d88c3e6d5b8a53591a1
+            }],
+            tooltip: {
+            theme: 'dark'
+        },
+        grid: {
+            strokeDashArray: 4,
+        },
+        xaxis: {
+            labels: {
+                padding: 0,
+            },
+            tooltip: {
+                enabled: false
+            },
+            type: 'datetime',
+        },
+        yaxis: {
+            labels: {
+                padding: 4
+            },
+        },
+            labels: [
+                '2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23'
+            ],
+<<<<<<< HEAD
+            colors: [tabler.getColor("primary"), tabler.getColor("gray-600")],
+            legend: {
+                show: false,
+            },
+=======
+        colors: [tabler.getColor("primary"), tabler.getColor("gray-600")],
+        legend: {
+            show: false,
+        },
+>>>>>>> 45f6520646aed558cadf7d88c3e6d5b8a53591a1
+        })).render();
+    });
+    // 매출금액
+    </script>
+    <script>
+    // 신규회원
+    document.addEventListener("DOMContentLoaded", function () {
+    window.ApexCharts && (new ApexCharts(document.getElementById('chart-new-clients'), {
+        chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 40.0,
+            sparkline: {
+                enabled: true
+            },
+            animations: {
+                enabled: false
+            },
+        },
+        fill: {
+            opacity: 1,
+        },
+        stroke: {
+            width: [2, 1],
+            dashArray: [0, 3],
+            lineCap: "round",
+            curve: "smooth",
+        },
+        series: [{
+            name: "24-02월",
+            data: [37, 35, 44, 28, 36, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 4, 46, 39, 62, 51, 35, 41, 67]
+        },{
+            name: "24-01월",
+            data: [93, 54, 51, 24, 35, 35, 31, 67, 19, 43, 28, 36, 62, 61, 27, 39, 35, 41, 27, 35, 51, 46, 62, 37, 44, 53, 41, 65, 39, 37]
+        }],
+        tooltip: {
+            theme: 'dark'
+        },
+        grid: {
+            strokeDashArray: 4,
+        },
+        xaxis: {
+            labels: {
+                padding: 0,
+            },
+            tooltip: {
+                enabled: false
+            },
+            type: 'datetime',
+        },
+        yaxis: {
+            labels: {
+                padding: 4
+            },
+        },
+        labels: [
+            '2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19'
+        ],
+        colors: [tabler.getColor("primary"), tabler.getColor("gray-600")],
+        legend: {
+            show: false,
+        },
+    })).render();
+    });
+    // 신규회원
+    </script>
+    <script>
+    // 포스트 게시글
+    document.addEventListener("DOMContentLoaded", function () {
+    window.ApexCharts && (new ApexCharts(document.getElementById('chart-active-users'), {
+        chart: {
+            type: "bar",
+            fontFamily: 'inherit',
+            height: 40.0,
+            sparkline: {
+                enabled: true
+            },
+            animations: {
+                enabled: false
+            },
+        },
+        plotOptions: {
+            bar: {
+                columnWidth: '50%',
+            }
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        fill: {
+            opacity: 1,
+        },
+        series: [{
+            name: "게시글",
+            data: [37, 35, 44, 28, 36, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46, 39, 62, 51, 35, 41, 67]
+        }],
+        tooltip: {
+            theme: 'dark'
+        },
+        grid: {
+            strokeDashArray: 4,
+        },
+        xaxis: {
+            labels: {
+                padding: 0,
+            },
+            tooltip: {
+                enabled: false
+            },
+            axisBorder: {
+                show: false,
+            },
+            type: 'datetime',
+        },
+        yaxis: {
+            labels: {
+                padding: 4
+            },
+        },
+        labels: [
+            '2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19'
+        ],
+        colors: [tabler.getColor("primary")],
+        legend: {
+            show: false,
+        },
+    })).render();
+    });
+    // 포스트 게시글
+    </script>
+    <script>
+    // 최근 트래픽
+    document.addEventListener("DOMContentLoaded", function () {
+    window.ApexCharts && (new ApexCharts(document.getElementById('chart-mentions'), {
+        chart: {
+            type: "bar",
+            fontFamily: 'inherit',
+            height: 240,
+            parentHeightOffset: 0,
+            toolbar: {
+                show: false,
+            },
+            animations: {
+                enabled: false
+            },
+            stacked: true,
+        },
+        plotOptions: {
+            bar: {
+                columnWidth: '50%',
+            }
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        fill: {
+            opacity: 1,
+        },
+        series: [{
+            name: "데스크탑",
+            data: [1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 2, 12, 5, 8, 22, 6, 8, 6, 4, 1, 8, 24, 29, 51, 40, 47, 23, 26, 50, 26, 41, 22, 46, 47, 81, 46, 6]
+        },{
+            name: "모바일",
+            data: [2, 5, 4, 3, 3, 1, 4, 7, 5, 1, 2, 5, 3, 2, 6, 7, 7, 1, 5, 5, 2, 12, 4, 6, 18, 3, 5, 2, 13, 15, 20, 47, 18, 15, 11, 10, 0]
+        },{
+            name: "기타",
+            data: [2, 9, 1, 7, 8, 3, 6, 5, 5, 4, 6, 4, 1, 9, 3, 6, 7, 5, 2, 8, 4, 9, 1, 2, 6, 7, 5, 1, 8, 3, 2, 3, 4, 9, 7, 1, 6]
+        }],
+        tooltip: {
+            theme: 'dark'
+        },
+        grid: {
+            padding: {
+                top: -20,
+                right: 0,
+                left: -4,
+                bottom: -4
+            },
+            strokeDashArray: 4,
+            xaxis: {
+                lines: {
+                    show: true
+                }
+            },
+        },
+        xaxis: {
+            labels: {
+                padding: 0,
+            },
+            tooltip: {
+                enabled: false
+            },
+            axisBorder: {
+                show: false,
+            },
+            type: 'datetime',
+        },
+        yaxis: {
+            labels: {
+                padding: 4
+            },
+        },
+        labels: [
+            '2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19', '2020-07-20', '2020-07-21', '2020-07-22', '2020-07-23', '2020-07-24', '2020-07-25', '2020-07-26'
+        ],
+        colors: [tabler.getColor("primary"), tabler.getColor("primary", 0.8), tabler.getColor("green", 0.8)],
+        legend: {
+            show: false,
+        },
+    })).render();
+    });
+    // 최근 트래픽
+    </script>
+    <script>
+    // 가장 많이 방문한 페이지 1
+    document.addEventListener("DOMContentLoaded", function () {
+    window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-bounce-rate-1'), {
+        chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 24,
+            animations: {
+                enabled: false
+            },
+            sparkline: {
+                enabled: true
+            },
+        },
+        tooltip: {
+            enabled: false,
+        },
+        stroke: {
+            width: 2,
+            lineCap: "round",
+        },
+        series: [{
+            color: tabler.getColor("primary"),
+            data: [1000, 2000, 300, 200, 5505, 1111, 2224, 500, 700]
+        }],
+    })).render();
+    });
+    // @가장 많이 방문한 페이지 1
+    </script>
+    <script>
+    // 가장 많이 방문한 페이지 2
+    document.addEventListener("DOMContentLoaded", function () {
+    window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-bounce-rate-2'), {
+        chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 24,
+            animations: {
+                enabled: false
+            },
+            sparkline: {
+                enabled: true
+            },
+        },
+        tooltip: {
+            enabled: false,
+        },
+        stroke: {
+            width: 2,
+            lineCap: "round",
+        },
+        series: [{
+            color: tabler.getColor("primary"),
+            data: [13, 11, 19, 22, 12, 7, 14, 3, 21]
+        }],
+    })).render();
+    });
+    // 가장 많이 방문한 페이지 2
+    </script>
+    <script>
+    // 가장 많이 방문한 페이지 3
+    document.addEventListener("DOMContentLoaded", function () {
+    window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-bounce-rate-3'), {
+        chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 24,
+            animations: {
+                enabled: false
+            },
+            sparkline: {
+                enabled: true
+            },
+        },
+        tooltip: {
+            enabled: false,
+        },
+        stroke: {
+            width: 2,
+            lineCap: "round",
+        },
+        series: [{
+            color: tabler.getColor("primary"),
+            data: [10, 13, 10, 4, 17, 3, 23, 22, 19]
+        }],
+    })).render();
+    });
+    // 가장 많이 방문한 페이지 3
+    </script>
+    <script>
+    // 가장 많이 방문한 페이지 4
+    document.addEventListener("DOMContentLoaded", function () {
+    window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-bounce-rate-4'), {
+        chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 24,
+            animations: {
+                enabled: false
+            },
+            sparkline: {
+                enabled: true
+            },
+        },
+        tooltip: {
+            enabled: false,
+        },
+        stroke: {
+            width: 2,
+            lineCap: "round",
+        },
+        series: [{
+            color: tabler.getColor("primary"),
+            data: [6, 15, 13, 13, 5, 7, 17, 20, 19]
+        }],
+    })).render();
+    });
+    // 가장 많이 방문한 페이지 4
+    </script>
+    <script>
+    // 가장 많이 방문한 페이지 5
+    document.addEventListener("DOMContentLoaded", function () {
+    window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-bounce-rate-5'), {
+        chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 24,
+            animations: {
+                enabled: false
+            },
+            sparkline: {
+                enabled: true
+            },
+        },
+        tooltip: {
+            enabled: false,
+        },
+        stroke: {
+            width: 2,
+            lineCap: "round",
+        },
+        series: [{
+            color: tabler.getColor("primary"),
+            data: [2, 11, 15, 14, 21, 20, 8, 23, 18, 14]
+        }],
+    })).render();
+    });
+    // 가장 많이 방문한 페이지 5
+    </script>
+    <script>
+    // 가장 많이 방문한 페이지 6
+    document.addEventListener("DOMContentLoaded", function () {
+    window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-bounce-rate-6'), {
+        chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 24,
+            animations: {
+                enabled: false
+            },
+            sparkline: {
+                enabled: true
+            },
+        },
+        tooltip: {
+            enabled: false,
+        },
+        stroke: {
+            width: 2,
+            lineCap: "round",
+        },
+        series: [{
+            color: tabler.getColor("primary"),
+            data: [22, 12, 7, 14, 3, 21, 8, 23, 18, 14]
+        }],
+    })).render();
+    });
+    // 가장 많이 방문한 페이지 6
+    </script>
+
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

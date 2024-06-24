@@ -1,0 +1,435 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 고객센터 > 1:1문의 목록
+                </div>
+                <h2 class="page-title">
+                    1:1문의 목록
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row row-cards">
+
+            <!-- 검색시작 -->
+            <div class="col-lg-3 aside-search" id="asideSearch">
+                <form action="" class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="subheader mb-2">작성일</div>
+                            <div class="date-control-box">
+                                <div>
+                                    <div class="input-icon mb-2">
+                                        <input class="form-control datepicker-icon startDate" placeholder="시작일" value=""/>
+                                        <span
+                                            class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                    d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                                                <path d="M16 3l0 4" />
+                                                <path d="M8 3l0 4" />
+                                                <path d="M4 11l16 0" />
+                                                <path d="M11 15l1 0" />
+                                                <path d="M12 15l0 3" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="input-icon mb-2">
+                                        <input class="form-control datepicker-icon endDate" placeholder="종료일" value=""/>
+                                        <span
+                                            class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                    d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                                                <path d="M16 3l0 4" />
+                                                <path d="M8 3l0 4" />
+                                                <path d="M4 11l16 0" />
+                                                <path d="M11 15l1 0" />
+                                                <path d="M12 15l0 3" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-selectgroup d-flex" role="group">
+                                    <label class="form-selectgroup-item flex-fill">
+                                        <input type="radio" name="icons" value="today" class="form-selectgroup-input date-control">
+                                        <span class="form-selectgroup-label fs-5">오늘</span>
+                                    </label>
+                                    <label class="form-selectgroup-item flex-fill">
+                                        <input type="radio" name="icons" value="week" class="form-selectgroup-input date-control">
+                                        <span class="form-selectgroup-label fs-5">7일</span>
+                                    </label>
+                                    <label class="form-selectgroup-item flex-fill">
+                                        <input type="radio" name="icons" value="1" class="form-selectgroup-input date-control">
+                                        <span class="form-selectgroup-label fs-5">1개월</span>
+                                    </label>
+                                    <label class="form-selectgroup-item flex-fill">
+                                        <input type="radio" name="icons" value="6" class="form-selectgroup-input date-control">
+                                        <span class="form-selectgroup-label fs-5">6개월</span>
+                                    </label>
+                                    <label class="form-selectgroup-item flex-fill">
+                                        <input type="radio" name="icons" value="12" class="form-selectgroup-input date-control">
+                                        <span class="form-selectgroup-label fs-5">12개월</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">답변상태</div>
+                            <div>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="qaState" checked="">
+                                    <span class="form-check-label">전체</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="qaState">
+                                    <span class="form-check-label">대기</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="qaState">
+                                    <span class="form-check-label">완료</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">분류</div>
+                            <div>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox">
+                                    <span class="form-check-label">일반회원</span>
+                                </label>
+                                <label class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox">
+                                    <span class="form-check-label">특별회원</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="subheader mb-2">검색</div>
+                            <select class="form-select mb-1">
+                                <option value="작성자명" selected>작성자명</option>
+                                <option value="제목">제목</option>
+                                <option value="내용">내용</option>
+                                <option value="제목+내용">제목+내용</option>
+                            </select>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn btn-primary w-100">
+                                검색
+                            </button>
+                            <a href="#" class="btn btn-secondary w-100 mt-1">
+                                검색 초기화
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="aside-open" id="asideOpen">목록 검색</button>
+            </div>
+            <!-- //검색시작 -->
+
+
+            <!-- 콘텐츠 시작 -->
+            <div class="col-lg-9 content-area">
+                <form action="">
+                    <div class="list-btns justify-content-between mb-3">
+                        <div>
+                            <button type="button" class="btn btn-warning">선택삭제</button>
+                        </div>
+                        <div>
+                            <select class="form-select ms-1 float-start w-auto">
+                                <option selected>등록일 역순 ⬆</option>
+                                <option>등록일 순 ⬇</option>
+                                <option>수정일 역순⬆</option>
+                                <option>수정일 순 ⬇</option>
+                            </select>
+                            <select class="form-select ms-1 float-start w-auto">
+                                <option selected>20개씩 보기</option>
+                                <option>30개씩 보기</option>
+                                <option>50개씩 보기</option>
+                                <option>100개씩 보기</option>
+                                <option>200개씩 보기</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="card table-mb-card">
+                        <div class="table-responsive">
+                            <table class="table table-vcenter card-table text-center table-mb label-control">
+                                <thead>
+                                    <tr>
+                                        <th class="check-all-box">
+                                            <label class="form-check form-check-inline m-0">
+                                                <input class="form-check-input check-all" type="checkbox">
+                                            </label>
+                                        </th>
+                                        <th>번호</th>
+                                        <th>분류</th>
+                                        <th>내용</th>
+                                        <th>작성자</th>
+                                        <th>작성일</th>
+                                        <th>답변상태</th>
+                                        <th>답변자</th>
+                                        <th>답변일</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="list-empty">
+                                            내역이 존재하지 않습니다.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="form-check form-check-inline m-0">
+                                                <input class="form-check-input" type="checkbox">
+                                            </label>
+                                        </td>
+                                        <td><span class="tm_tit">번호</span><span class="tm_cnt">1</span></td>
+                                        <td><span class="tm_tit">분류</span><span class="tm_cnt">임대인(건물주)</span></td>
+                                        <td>
+                                            <span class="tm_tit">내용</span>
+                                            <span class="tm_cnt">
+                                                <a href="javascript:;" class="link table-list-subject" data-bs-toggle="modal" data-bs-target="#qnaDetail" style="max-width:200px;">
+                                                    제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td><span class="tm_tit">작성자</span><span class="tm_cnt">user_123(홍길동)</span></td>
+                                        <td><span class="tm_tit">작성일</span><span class="tm_cnt">2022-12-22</span></td>
+                                        <td><span class="tm_tit">답변상태</span><span class="tm_cnt">완료</span></td>
+                                        <td><span class="tm_tit">답변자</span><span class="tm_cnt">admin(홍길동)</span></td>
+                                        <td><span class="tm_tit">답변일</span><span class="tm_cnt">2022-12-22</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="form-check form-check-inline m-0">
+                                                <input class="form-check-input" type="checkbox">
+                                            </label>
+                                        </td>
+                                        <td><span class="tm_tit">번호</span><span class="tm_cnt">1</span></td>
+                                        <td><span class="tm_tit">분류</span><span class="tm_cnt">임대인(건물주)</span></td>
+                                        <td>
+                                            <span class="tm_tit">내용</span>
+                                            <span class="tm_cnt">
+                                                <a href="javascript:;" class="link table-list-subject" data-bs-toggle="modal" data-bs-target="#qnaDetail" style="max-width:200px;">
+                                                    제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td><span class="tm_tit">작성자</span><span class="tm_cnt">user_123(홍길동)</span></td>
+                                        <td><span class="tm_tit">작성일</span><span class="tm_cnt">2022-12-22</span></td>
+                                        <td><span class="tm_tit">답변상태</span><span class="tm_cnt">완료</span></td>
+                                        <td><span class="tm_tit">답변자</span><span class="tm_cnt">admin(홍길동)</span></td>
+                                        <td><span class="tm_tit">답변일</span><span class="tm_cnt">2022-12-22</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="form-check form-check-inline m-0">
+                                                <input class="form-check-input" type="checkbox">
+                                            </label>
+                                        </td>
+                                        <td><span class="tm_tit">번호</span><span class="tm_cnt">1</span></td>
+                                        <td><span class="tm_tit">분류</span><span class="tm_cnt">임차인(세입자)</span></td>
+                                        <td>
+                                            <span class="tm_tit">내용</span>
+                                            <span class="tm_cnt">
+                                                <a href="javascript:;" class="link table-list-subject" data-bs-toggle="modal" data-bs-target="#qnaDetail" style="max-width:200px;">
+                                                    제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td><span class="tm_tit">작성자</span><span class="tm_cnt">user_123(홍길동)</span></td>
+                                        <td><span class="tm_tit">작성일</span><span class="tm_cnt">2022-12-22</span></td>
+                                        <td><span class="tm_tit">답변상태</span><span class="tm_cnt">완료</span></td>
+                                        <td><span class="tm_tit">답변자</span><span class="tm_cnt">admin(홍길동)</span></td>
+                                        <td><span class="tm_tit">답변일</span><span class="tm_cnt">2022-12-22</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="form-check form-check-inline m-0">
+                                                <input class="form-check-input" type="checkbox">
+                                            </label>
+                                        </td>
+                                        <td><span class="tm_tit">번호</span><span class="tm_cnt">1</span></td>
+                                        <td><span class="tm_tit">분류</span><span class="tm_cnt">임차인(세입자)</span></td>
+                                        <td>
+                                            <span class="tm_tit">내용</span>
+                                            <span class="tm_cnt">
+                                                <a href="javascript:;" class="link table-list-subject" data-bs-toggle="modal" data-bs-target="#qnaDetail" style="max-width:200px;">
+                                                    제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td><span class="tm_tit">작성자</span><span class="tm_cnt">user_123(홍길동)</span></td>
+                                        <td><span class="tm_tit">작성일</span><span class="tm_cnt">2022-12-22</span></td>
+                                        <td><span class="tm_tit">답변상태</span><span class="tm_cnt">완료</span></td>
+                                        <td><span class="tm_tit">답변자</span><span class="tm_cnt">admin(홍길동)</span></td>
+                                        <td><span class="tm_tit">답변일</span><span class="tm_cnt">2022-12-22</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form> 
+
+                <div class="display-flex justify-content-center">
+                    <ul class="pagination mt-4">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevrons-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M11 7l-5 5l5 5"></path>
+                                    <path d="M17 7l-5 5l5 5"></path>
+                                 </svg>
+                            </a>
+                        </li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M15 6l-6 6l6 6"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M9 6l6 6l-6 6"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevrons-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M7 7l5 5l-5 5"></path>
+                                    <path d="M13 7l5 5l-5 5"></path>
+                                 </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 콘텐츠 끝 -->
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal modal-blur fade" id="qnaDetail" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">1:1문의 상세</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card table-mb-card">
+                    <div class="card-header fs-4">user_id(홍길동), 010-1234-1234, 2023-03-02 23:59</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">내용</div>
+                                <div class="mt-2">1:1문의글 작성 시 입력한 내용이 표기됩니다1:1문의글 작성 시 입력한 내용이 표기됩니다1:1문의글 작성 시 입력한 내용이 표기됩니다</div>
+                                <div class="row g-2 mt-2">
+                                    <div class="col-lg-3 col-6 mt-2">
+                                        <img src="../../dist/img/img.jpg" class=" border">
+                                    </div>
+                                    <div class="col-lg-3 col-6 mt-2">
+                                        <img src="../../dist/img/img.jpg" class=" border">
+                                    </div>
+                                    <div class="col-lg-3 col-6 mt-2">
+                                        <img src="../../dist/img/img.jpg" class=" border">
+                                    </div>
+                                    <div class="col-lg-3 col-6 mt-2">
+                                        <img src="../../dist/img/img.jpg" class=" border">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2 required">답변</div>
+                                <div class="input-group">
+                                    <textarea name="" id="" class="form-control" maxlength="500" required></textarea>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text max-len"><b>0</b> / 500</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2 required">상태</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="wtDisplay" >
+                                        <span class="form-check-label">완료</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="wtDisplay">
+                                        <span class="form-check-label">대기</span>
+                                    </label>
+                                </div>
+                                <small class="form-hint mt-2">
+                                    ‘완료’ 상태에서만 사용자에게 노출됩니다
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="w-100">
+                  <div class="row">
+                    <div class="col"><a href="#" class="btn btn-warning w-100">
+                        삭제
+                      </a></div>
+                    <div class="col"><a href="#" class="btn btn-secondary w-100" data-bs-dismiss="modal">
+                        취소
+                      </a></div>
+                      <div class="col"><a href="#" class="btn btn-primary w-100">
+                        저장
+                      </a></div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

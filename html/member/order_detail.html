@@ -1,0 +1,163 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 회원 > 결제목록 > 결제상세
+                </div>
+                <h2 class="page-title">
+                    결제상세 (user_id)
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <form action="">
+        <div class="list-btns justify-content-end mb-3">
+            <div>
+                <a href="./order.html" class="btn btn-secondary">목록</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">주문번호</div>
+                                <input type="text" class="form-control" value="202304176578" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">주문일시</div>
+                                <input type="text" class="form-control" value="2023-04-28 23:59" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">총 결제금액</div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" value="10000">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">원</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">회원ID</div>
+                                <input type="text" class="form-control" value="neophan" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">결제자명</div>
+                                <input type="text" class="form-control" value="홍길동" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">결제수단</div>
+                                <input type="text" class="form-control" value="신용카드" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">결제상태</div>
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" value="결제완료" readonly="">
+                                    <button class="btn bg-warning text-light" type="button" data-bs-toggle="modal" data-bs-target="#refundDetail">환불처리</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">환불정보</div>
+                                <input type="text" class="form-control" value="user_id(admin_id) 환불일시" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">최종수정일</div>
+                                <input type="text" class="form-control" value="2023-01-01 11:11:11" readonly="">
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">환불사유</div>
+                                <textarea class="form-control">환불신청 시 입력한 환불사유 표기</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-btns justify-content-between mt-3">
+            <div>
+                <div>
+                    <button type="button" class="btn btn-warning">삭제</button>
+                </div>
+            </div>
+            <div>
+                <a href="./order.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="modal modal-blur fade" id="refundDetail" tabindex="-1" role="dialog" aria-hidden="true"
+    data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">환불처리</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card table-mb-card">
+                    <div class="card-header fs-4">환불정보</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">주문번호</div>
+                                <input type="text" class="form-control" value="202304176578" readonly>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">주문일시</div>
+                                <input type="text" class="form-control" value="2023-04-17 23:59" readonly>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">환불금액</div>
+                                <input type="text" class="form-control" value="2,200원" readonly>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">환불사유</div>
+                                <div class="input-group">
+                                    <textarea name="" id="" class="form-control" maxlength="150" required></textarea>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text max-len"><b>0</b> / 150</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="col"><a href="#" class="btn btn-secondary w-100" data-bs-dismiss="modal">
+                                취소
+                            </a></div>
+                        <div class="col"><a href="#" class="btn btn-primary w-100">
+                                환불완료
+                            </a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

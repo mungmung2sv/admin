@@ -1,0 +1,284 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 게시판 > board_table name > board_table name 상세
+                </div>
+                <h2 class="page-title">
+                board_table name 상세 (게시판명 - 게시글 제목)
+                </h2>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <form action="">
+        <div class="list-btns justify-content-end mb-3">
+            <div>
+                <a href="./room.html" class="btn btn-secondary">목록</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">작성글 번호</div>
+                                <input type="text" class="form-control" value="202304176578" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">등록일</div>
+                                <input type="text" class="form-control" value="2023-04-28 23:59" readonly="">
+                            </div>
+                            
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">작성자명</div>
+                                <input type="text" class="form-control" value="작성자명" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">작성자 닉네임</div>
+                                <input type="text" class="form-control" value="작성자 닉네임" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">상태</div>
+                                <select class="form-select">
+                                    <option value="노출" selected>노출</option>
+                                    <option value="비노출">비노출</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">공지/상단고정</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <span class="form-check-label">공지</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <span class="form-check-label">상단고정</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">제목</div>
+                                <input type="text" class="form-control" value="제목제목제목">
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="subheader mb-2">본문 내용</div>
+                                <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+                                <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+                                <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+                                <div id="editor-container" style="height:300px">
+                                </div>
+                                <script>
+                                var quill = new Quill('#editor-container', {
+                                    modules: {
+                                        toolbar: [
+                                        ['bold', 'italic', 'underline'],
+                                        ['image']
+                                        ]
+                                    },
+                                    placeholder: 'Compose an epic...',
+                                    theme: 'snow',
+                                    imageUploader: {
+                                        upload: file => {
+                                            // 이미지를 업로드할 서이미지서버의 엔드포인트로 파일을 전송
+                                            const formData = new FormData();
+                                            formData.append('image', file);
+                                            console.log(1)
+
+                                            return fetch('이미지서버_이미지_업로드_엔드포인트', {
+                                                method: 'POST',
+                                                body: formData,
+                                            })
+                                            .then(response => response.json())
+                                            .then(data => data.url)
+                                            .catch(error => {
+                                                console.error('Error uploading image', error);
+                                                throw error;
+                                            });
+                                        }
+                                    }
+                                });
+
+                                //이미지 여러개 업로드 가능
+                                const toolbar = quill.getModule('toolbar');
+                                toolbar.addHandler('image', function() {
+                                const _this3 = this;
+                                let fileInput = this.container.querySelector('input.ql-image[type=file]');
+                                if (fileInput == null) {
+                                    fileInput = document.createElement('input');
+                                    fileInput.setAttribute('type', 'file');
+                                    fileInput.setAttribute('multiple', 'multiple');
+                                    fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon');
+                                    fileInput.classList.add('ql-image');
+                                    fileInput.addEventListener('change', function () {
+                                    if (fileInput.files != null && fileInput.files[0] != null) {
+                                        for(let i = 0; i < fileInput.files.length; i++) {
+                                        const reader = new FileReader();
+                                        reader.onload = function (e) {
+                                            const range = _this3.quill.getSelection(true);
+                                            quill.insertEmbed(range.index, 'image', e.target.result);
+                                            quill.setSelection(range.index + 1, 'image', Quill.sources.SILENT);
+                                            fileInput.value = "";
+                                        };
+                                        reader.readAsDataURL(fileInput.files[i]);
+                                        }
+                                    }
+                                    });
+                                    this.container.appendChild(fileInput);
+                                }
+                                fileInput.click();
+                                });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card accordion">
+                    <div class="card-header accordion-header p-0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false">
+                            <h3 class="card-title mb-0">댓글목록 <strong class="text-primary ">(40)</strong></h3>
+                        </button>
+                    </div>
+
+                    <div id="collapse-2"  class="card-body accordion-collapse collapse" data-bs-parent="#accordion-example">
+                        <div class="reply_list">
+                            <div class="item item_hide"><!-- 가림처리된 댓글은 item_hide 클래스 -->
+                                <div class="info">
+                                    <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                    <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                    <span class="date">8시간 전</span>
+                                    <button type="button" class="btn btn-sm fs-5 btn-primary">가림 취소</button>
+                                </div>
+                                <div class="cnt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                </div>
+                                <div class="like">1</div>
+                            </div>
+                            <div class="item">
+                                <div class="info">
+                                    <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                    <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                    <span class="date">8시간 전</span>
+                                    <button type="button" class="btn btn-sm fs-5 btn-warning">가리기</button>
+                                </div>
+                                <div class="cnt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                </div>
+                                <div class="like">1</div>
+                                <button type="button" class="reply_more">2개 댓글 더 보기</button>
+                                <div class="inner">
+                                    <div class="item">
+                                        <div class="info">
+                                            <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                            <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                            <span class="date">8시간 전</span>
+                                            <button type="button" class="btn btn-sm fs-5 btn-primary">가림 취소</button>
+                                        </div>
+                                        <div class="cnt">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                        </div>
+                                        <div class="like">1</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="info">
+                                            <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                            <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                            <span class="date">8시간 전</span>
+                                            <button type="button" class="btn btn-sm fs-5 btn-primary">가림 취소</button>
+                                        </div>
+                                        <div class="cnt">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                        </div>
+                                        <div class="like">1</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="info">
+                                    <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                    <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                    <span class="date">8시간 전</span>
+                                    <button type="button" class="btn btn-sm fs-5 btn-warning">가리기</button>
+                                </div>
+                                <div class="cnt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                </div>
+                                <div class="like">1</div>
+                            </div>
+                            <div class="item">
+                                <div class="info">
+                                    <span class="profile" style="background-image:url('../../dist/img/img.jpg');"></span>
+                                    <a href="../member/member_detail.html" target="_blank" class="name">홍길동</a>
+                                    <span class="date">8시간 전</span>
+                                    <button type="button" class="btn btn-sm fs-5 btn-warning">가리기</button>
+                                </div>
+                                <div class="cnt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.
+                                </div>
+                                <div class="like">1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">부가정보</h3></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">최종수정일</div>
+                                <input type="text" class="form-control" value="2022-22-22 11:11:11" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">최종수정자</div>
+                                <input type="text" class="form-control" value="admin_id" readonly="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">등록자</div>
+                                <input type="text" class="form-control" value="admin_id" readonly="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-btns justify-content-between mt-3">
+            <div>
+                <div>
+                    <button type="button" class="btn btn-warning">삭제</button>
+                </div>
+            </div>
+            <div>
+                <a href="./room.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

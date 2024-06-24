@@ -1,0 +1,85 @@
+<?php
+include_once('../../layout/header.html');
+?>
+
+<div class="page page-center">
+    <div class="container container-tight py-4">
+        <div class="text-center mb-3">
+            <div class="navbar-brand navbar-brand-autodark">
+            admin 
+            </div>
+        </div>
+        <div class="card card-md">
+            <div class="card-body text-center py-4 p-sm-4">
+                <h2>아이디 · 비밀번호 찾기</h2>
+                <p class="text-muted">소중한 개인정보 보호를 위해 등록된 휴대폰번호로<br/>
+                    아이디/비밀번호 찾기를 진행해 주세요</p>
+            </div>
+            <div class="hr-text hr-text-center hr-text-spaceless">FIND ID / PASSWORD</div>
+
+
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">이름</label>
+                    <input type="text" class="form-control ps-1">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">휴대폰번호</label>
+                    <div class="input-group custom-search-form size_xl">
+                        <input class="form-control max_text" id="" maxlength="20" type="text" name="">
+                        <div class="input-group-append">
+                            <button type="button" id="certifyBtn1" class="btn btn-tlink" onclick="codeSend()">인증번호 발송</button>
+                            <button type="button" id="certifyBtn2" class="btn btn-tlink" style="display: none;">재발송</button>
+                        </div>
+                    </div>
+                    <script>
+                        function codeSend(){
+                            document.querySelector('#certifyBtn1').style.display = 'none';
+                            document.querySelector('.certifyRow').style.display = 'block';
+                            document.querySelector('#certifyBtn2').style.display = 'block';
+                            countdown();
+                        }
+
+                        let seconds = 120;
+
+                        function countdown() {
+                            const counter = document.getElementById("countdown");
+                            const minutes = Math.floor(seconds / 60);
+                            const remainingSeconds = seconds % 60;
+
+                            counter.innerHTML = `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+
+                            if (seconds > 0) {
+                                seconds--;
+                                setTimeout(countdown, 1000);
+                            } else {
+                                alert("입력시간이 초과되었습니다. 재발송버튼을 눌러 다시 인증해주세요.");
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="mb-3 certifyRow" style="display: none;">
+                    <label class="form-label">인증번호</label>
+                    <div class="input-group custom-search-form size_xl">
+                        <input name="" type="text" id="" class="form-control" required="" placeholder="-없이 숫자만">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="countdown" >2:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a href="./auth.html" class="btn btn-primary w-100">
+                        확인
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<?php
+include_once('../../layout/footer_sub.html');
+?>

@@ -1,0 +1,240 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 사진첩 > 사진첩목록 > 사진등록
+                </div>
+                <h2 class="page-title">
+                사진등록
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <form action="">
+        <div class="list-btns justify-content-end mb-3">
+            <div>
+                <a href="./photo.html" class="btn btn-secondary">목록</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">분류</div>
+                                <select class="form-select">
+                                    <option value="">선택하세요</option>
+                                    <option value="책방지기" selected>책방지기</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">앨범명</div>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">대표 이미지</div>
+                                <!-- file-type 업로드 가능한 파일 확장자 file-max-size 용량 제한 mb -->
+                                <div class="input-group mb-1">
+                                    <input type="file" class="form-control file-add photo_thum" file-type="jpg jpeg png" file-max-size="3" value="file_name.jpg">
+                                    <div class="photo_images">
+                                    </div><!-- 이미지 미리보기 -->
+                                    <button class="btn bg-secondary text-light" type="button">삭제</button>
+                                </div>
+                                <small class="form-hint mt-2">
+                                    최대 3MB까지 등록가능. jpg, jpeg, png
+                                </small>
+
+                                <!-- 기존에 등록된 이미지가 있을때 노출 -->
+                                <!-- <div class="uploaded_file input-group mt-2">
+                                    <label class="form-check m-0">
+                                        <input class="form-check-input" type="checkbox">
+                                        등록된 이미지파일 삭제하기
+                                        (file_name.jpg)
+                                        <div class="photo_images">
+                                            <div class="item"><img src="../../dist/img/img.jpg" alt=""></div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <small class="form-hint mt-2">
+                                    새로운 이미지 등록시 기존에 등록된 이미지파일은 자동삭제됩니다.
+                                </small> -->
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">상태</div>
+                                <select class="form-select">
+                                    <option value="">선택하세요</option>
+                                    <option value="노출">노출</option>
+                                    <option value="비노출">비노출</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">이미지 목록</h3></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="file_upload_wrap">
+                                    <div class="file_upload_btn">
+                                        <label><input type="file" id="fileInput" multiple>이미지 업로드하기</label>
+                                    </div>
+                                    <div class="file_upload_list" id="fileList">
+                                        <!-- <div class="item">
+                                            <input type="file" class="input_file">
+                                            <input type="text" class="input_index">
+                                            <span class="num">1</span>
+                                            <span class="img"><img src="../../dist/img/img.jpg" alt=""></span>
+                                            <button type="button" class="file_remove">삭제</button>
+                                        </div>
+                                        <div class="item">
+                                            <input type="file" class="input_file">
+                                            <input type="text" class="input_index">
+                                            <span class="num">2</span>
+                                            <span class="img"><img src="../../dist/img/img.jpg" alt=""></span>
+                                            <button type="button" class="file_remove">삭제</button>
+                                        </div>-->
+                                    </div>
+                                </div>
+                                <script>
+                                $(document).ready(function () {
+                                    const fileList = document.getElementById("fileList");
+                                    let uploadedFiles = []; // 저장된 이미지 데이터
+
+                                    // 기존 이미지 정보를 서버에서 가져옴  //등록페이지에서는 필요하지 않고 상세페이지에서 기존에 등록된 이미지가 있을때 json으로 불러오면됨
+                                    const existingImagesData = [
+                                        //{ name: "img.jpg", path: "../../dist/img/img.jpg" },
+                                        //{ name: "img2.jpg", path: "../../dist/img/img2.jpg" },
+                                        // 추가 이미지 정보
+                                    ];
+
+                                    // 기존 이미지 정보를 uploadedFiles 배열에 추가하고 화면에 표시
+                                    existingImagesData.forEach((imageData, index) => {
+                                        const item = `
+                                            <div class="item">
+                                                <span class="num">${index + 1}</span>
+                                                <span class="img"><img src="${imageData.path}" alt=""></span>
+                                                <button type="button" class="file_remove">삭제</button>
+                                            </div>
+                                        `;
+
+                                        $(fileList).append(item);
+                                        uploadedFiles.push(imageData); // 이미지 정보를 배열에 저장
+                                    });
+
+                                    // 파일 선택 시
+                                    $("#fileInput").change(function () {
+                                        const files = [...$(this)[0].files];
+
+                                        for (let i = 0; i < files.length; i++) {
+                                            const file = files[i];
+                                            const allowedExtensions = ["jpg", "png", "gif", "jpeg"]; // 허용할 확장자 목록
+
+                                            // 파일의 확장자를 가져옴
+                                            const fileExtension = file.name.split(".").pop().toLowerCase();
+
+                                            // 허용된 확장자만 업로드
+                                            if (allowedExtensions.includes(fileExtension)) {
+                                                const isFileInArray = uploadedFiles.some(existingFile => existingFile.name === file.name);
+
+                                                if (!isFileInArray) {
+                                                    const reader = new FileReader();
+
+                                                    reader.onload = function (e) {
+                                                        const item = `
+                                                            <div class="item">
+                                                                <span class="num">${uploadedFiles.length + 1}</span>
+                                                                <span class="img"><img src="${e.target.result}" alt=""></span>
+                                                                <button type="button" class="file_remove">삭제</button>
+                                                            </div>
+                                                        `;
+
+                                                        $(fileList).append(item);
+                                                        uploadedFiles.push(file); // 파일을 배열에 저장
+                                                        updateFileOrder();
+                                                    };
+
+                                                    reader.readAsDataURL(file);
+                                                }
+                                            } else {
+                                                alert("허용되지 않는 파일 확장자입니다. (jpg, png, gif, jpeg만 허용)");
+                                            }
+                                        }
+                                    });
+
+                                    // 드래그 앤 드롭으로 순서 변경
+                                    $(fileList).sortable({
+                                        items: ".item",
+                                        update: function (event, ui) {
+                                            updateFileOrder(); // 파일 순서 업데이트
+                                        },
+                                    });
+
+                                    // 파일 삭제
+                                    $(fileList).on("click", ".file_remove", function () {
+                                        const itemIndex = $(this).parent().index();
+                                        $(this).parent().remove();
+                                        updateFileOrder(); // 파일 순서 업데이트
+                                    });
+
+                                    // 파일 순서 업데이트
+                                    function updateFileOrder() {
+                                        const items = $(fileList).find(".item");
+
+                                        // 업데이트된 배열 초기화
+                                        const newUploadedFiles = new Array(items.length);
+
+                                        items.each(function (index) {
+                                            const num = $(this).find(".num");
+                                            const fileIndex = parseInt(num.text()) - 1;
+                                            newUploadedFiles[index] = uploadedFiles[fileIndex];
+                                            num.text(index + 1);
+                                        });
+
+                                        uploadedFiles = newUploadedFiles; // 업데이트된 배열로 교체
+                                    }
+
+                                    // 파일 정보 확인
+                                     $('.aaaaaa').click(function(){
+                                         console.log("저장된 파일 확인:", uploadedFiles);
+                                     });
+                                });
+                                </script>
+                                <button type="button" class="aaaaaa">업로드된 파일 확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-btns justify-content-end mt-3">
+            <div>
+                <a href="./room.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

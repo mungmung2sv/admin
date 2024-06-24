@@ -1,0 +1,259 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 주문 > 정산관리
+                </div>
+                <h2 class="page-title">
+                    정산관리
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row row-cards">
+
+            <!-- 검색시작 -->
+            <div class="col-lg-3 aside-search" id="asideSearch">
+                <form action="" class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="subheader mb-2">처리월</div>
+                            <div class="input-group">
+                                <select class="form-select">
+                                    <option value="2023">2023</option>
+                                </select>
+                                <select class="form-select">
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn btn-primary w-100">
+                                검색
+                            </button>
+                            <a href="#" class="btn btn-secondary w-100 mt-1">
+                                검색 초기화
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="aside-open" id="asideOpen">목록 검색</button>
+            </div>
+            <!-- //검색시작 -->
+
+
+            <!-- 콘텐츠 시작 -->
+            <!-- 열려있게 하려면 토글버튼에  collapsed 클래스 삭제, 토글버튼에 aria-expanded -> true, div.accordion-collapse에 show 추가 -->
+            <div class="col-lg-9 content-area">
+                <div class="card table-mb-card accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse-1" aria-expanded="true">
+                                총계
+                            </button>
+                        </h2>
+                        <div id="collapse-1" class="accordion-collapse collapse show">
+                            <div class="table-responsive">
+                                <table class="table table-vcenter card-table text-center table-mb">
+                                    <thead>
+                                        <tr>
+                                            <th>총건</th>
+                                            <th>매출건</th>
+                                            <th>취소건</th>
+                                            <th>실거래건</th>
+                                            <th>(+)매출</th>
+                                            <th>(-)매출</th>
+                                            <th>실매출</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="7" class="list-empty">
+                                                내역이 존재하지 않습니다.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="tm_tit">총건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">매출건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">취소건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">실거래건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">(+)매출</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">(-)매출</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">실매출</span><span class="tm_cnt">228</span></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><span class="tm_tit">총건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">매출건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">취소건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">실거래건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">(+)매출</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">(-)매출</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">실매출</span><span class="tm_cnt">228</span></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card table-mb-card accordion mt-4">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse-2" aria-expanded="false">
+                                결제수단별
+                            </button>
+                        </h2>
+                        <div id="collapse-2" class="accordion-collapse collapse">
+                            <div class="table-responsive">
+                                <table class="table table-vcenter card-table text-center table-mb">
+                                    <thead>
+                                        <tr>
+                                            <th>결제수단</th>
+                                            <th>총건</th>
+                                            <th>매출건</th>
+                                            <th>취소건</th>
+                                            <th>실거래건</th>
+                                            <th>(+)매출</th>
+                                            <th>(-)매출</th>
+                                            <th>실매출</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="8" class="list-empty">
+                                                내역이 존재하지 않습니다.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="tm_tit">결제수단</span><span class="tm_cnt">신용카드</span></td>
+                                            <td><span class="tm_tit">총건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">매출건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">취소건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">실거래건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">(+)매출</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">(-)매출</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">실매출</span><span class="tm_cnt">228</span></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td>합계</td>
+                                            <td><span class="tm_tit">총건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">매출건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">취소건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">실거래건</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">(+)매출</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">(-)매출</span><span class="tm_cnt">228</span></td>
+                                            <td><span class="tm_tit">실매출</span><span class="tm_cnt">228</span></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card accordion mt-4">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse-3" aria-expanded="false">
+                                회원별(150)
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse">
+                            <div class="table-responsive">
+                                <table class="table table-vcenter card-table text-center table-mb">
+                                    <thead>
+                                        <tr>
+                                            <th>회사명(회원명)</th>
+                                            <th>아이디</th>
+                                            <th>사업자번호</th>
+                                            <th>실매출</th>
+                                            <th>신용카드</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="5" class="list-empty">
+                                                내역이 존재하지 않습니다.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="tm_tit">회사명(회원명)</span><span class="tm_cnt">홍길동</span></td>
+                                            <td><span class="tm_tit">아이디</span><span class="tm_cnt">user_id</span></td>
+                                            <td><span class="tm_tit">사업자번호</span><span class="tm_cnt">228-123-123</span></td>
+                                            <td><span class="tm_tit">실매출</span><span class="tm_cnt">30,000</span></td>
+                                            <td><span class="tm_tit">신용카드</span><span class="tm_cnt">30,000</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="tm_tit">회사명(회원명)</span><span class="tm_cnt">홍길동</span></td>
+                                            <td><span class="tm_tit">아이디</span><span class="tm_cnt">user_id</span></td>
+                                            <td><span class="tm_tit">사업자번호</span><span class="tm_cnt">228-123-123</span></td>
+                                            <td><span class="tm_tit">실매출</span><span class="tm_cnt">30,000</span></td>
+                                            <td><span class="tm_tit">신용카드</span><span class="tm_cnt">30,000</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="tm_tit">회사명(회원명)</span><span class="tm_cnt">홍길동</span></td>
+                                            <td><span class="tm_tit">아이디</span><span class="tm_cnt">user_id</span></td>
+                                            <td><span class="tm_tit">사업자번호</span><span class="tm_cnt">228-123-123</span></td>
+                                            <td><span class="tm_tit">실매출</span><span class="tm_cnt">30,000</span></td>
+                                            <td><span class="tm_tit">신용카드</span><span class="tm_cnt">30,000</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="tm_tit">회사명(회원명)</span><span class="tm_cnt">홍길동</span></td>
+                                            <td><span class="tm_tit">아이디</span><span class="tm_cnt">user_id</span></td>
+                                            <td><span class="tm_tit">사업자번호</span><span class="tm_cnt">228-123-123</span></td>
+                                            <td><span class="tm_tit">실매출</span><span class="tm_cnt">30,000</span></td>
+                                            <td><span class="tm_tit">신용카드</span><span class="tm_cnt">30,000</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="tm_tit">회사명(회원명)</span><span class="tm_cnt">홍길동</span></td>
+                                            <td><span class="tm_tit">아이디</span><span class="tm_cnt">user_id</span></td>
+                                            <td><span class="tm_tit">사업자번호</span><span class="tm_cnt">228-123-123</span></td>
+                                            <td><span class="tm_tit">실매출</span><span class="tm_cnt">30,000</span></td>
+                                            <td><span class="tm_tit">신용카드</span><span class="tm_cnt">30,000</span></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">합계</td>
+                                            <td><span class="tm_tit">실매출</span><span class="tm_cnt">30,000</span></td>
+                                            <td><span class="tm_tit">신용카드</span><span class="tm_cnt">30,000</span></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- 콘텐츠 끝 -->
+        </div>
+    </div>
+</div>
+
+
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

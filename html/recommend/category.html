@@ -1,0 +1,278 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 도서 > 추천도서 분류 관리
+                </div>
+                <h2 class="page-title">
+                추천도서 분류 관리
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <form action="">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="">
+                            <div class="card table-mb-card">
+                                <div class="table-responsive">
+                                    <table class="table table-vcenter card-table text-center table-mb">
+                                        <colgroup>
+                                            <col style="width:15%;">
+                                            <col style="width:35%;">
+                                            <col style="width:25%;">
+                                            <col style="width:25%;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>코드</th>
+                                                <th>분류명</th>
+                                                <th>상태(Y/N)</th>
+                                                <th>추가</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span class="tm_tit">코드</span>
+                                                    <span class="tm_cnt">
+                                                        <input type="tel" class="form-control text-center" value="02" readonly>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">분류명</span>
+                                                    <span class="tm_cnt">
+                                                        <input type="text" class="form-control">
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">상태(Y/N)</span>
+                                                    <span class="tm_cnt">
+                                                        <label class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="code1_status" value="Y">Y
+                                                        </label>
+                                                        <label class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="code1_status" value="N">N
+                                                        </label>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">추가</span>
+                                                    <span class="tm_cnt">
+                                                        <button type="button" class="btn btn-primary w-100">추가</button>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="">
+                            <div class="card table-mb-card">
+                                <div class="table-responsive">
+                                    <table class="table table-vcenter card-table text-center table-mb">
+                                    <colgroup>
+                                            <col style="width:15%;">
+                                            <col style="width:35%;">
+                                            <col style="width:25%;">
+                                            <col style="width:12.5%;">
+                                            <col style="width:12.5%;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>코드</th>
+                                                <th>분류명</th>
+                                                <th>상태(Y/N)</th>
+                                                <th>수정</th>
+                                                <th>삭제</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span class="tm_tit">코드</span>
+                                                    <span class="tm_cnt">
+                                                        01
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">분류명</span>
+                                                    <span class="tm_cnt">
+                                                        <input type="text" class="form-control" value="퇴임후">
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">상태(Y/N)</span>
+                                                    <span class="tm_cnt">
+                                                        <label class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="code1_status" value="Y">Y
+                                                        </label>
+                                                        <label class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="code1_status" value="N">N
+                                                        </label>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">수정</span>
+                                                    <span class="tm_cnt">
+                                                        <button type="button" class="btn btn-primary w-100">수정</button>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">삭제</span>
+                                                    <span class="tm_cnt">
+                                                        <button type="button" class="btn btn-warning w-100">삭제</button>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="tm_tit">코드</span>
+                                                    <span class="tm_cnt">
+                                                        01
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">분류명</span>
+                                                    <span class="tm_cnt">
+                                                        <input type="text" class="form-control" value="재임중">
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">상태(Y/N)</span>
+                                                    <span class="tm_cnt">
+                                                        <label class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="code1_status" value="Y">Y
+                                                        </label>
+                                                        <label class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="code1_status" value="N">N
+                                                        </label>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">수정</span>
+                                                    <span class="tm_cnt">
+                                                        <button type="button" class="btn btn-primary w-100">수정</button>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">삭제</span>
+                                                    <span class="tm_cnt">
+                                                        <button type="button" class="btn btn-warning w-100">삭제</button>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="tm_tit">코드</span>
+                                                    <span class="tm_cnt">
+                                                        01
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">분류명</span>
+                                                    <span class="tm_cnt">
+                                                        <input type="text" class="form-control" value="재임전">
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">상태(Y/N)</span>
+                                                    <span class="tm_cnt">
+                                                        <label class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="code1_status" value="Y">Y
+                                                        </label>
+                                                        <label class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="code1_status" value="N">N
+                                                        </label>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">수정</span>
+                                                    <span class="tm_cnt">
+                                                        <button type="button" class="btn btn-primary w-100">수정</button>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">삭제</span>
+                                                    <span class="tm_cnt">
+                                                        <button type="button" class="btn btn-warning w-100">삭제</button>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="tm_tit">코드</span>
+                                                    <span class="tm_cnt">
+                                                        01
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">분류명</span>
+                                                    <span class="tm_cnt">
+                                                        <input type="text" class="form-control" value="OO책방">
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">상태(Y/N)</span>
+                                                    <span class="tm_cnt">
+                                                        <label class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="code1_status" value="Y">Y
+                                                        </label>
+                                                        <label class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="code1_status" value="N">N
+                                                        </label>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">수정</span>
+                                                    <span class="tm_cnt">
+                                                        <button type="button" class="btn btn-primary w-100">수정</button>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="tm_tit">삭제</span>
+                                                    <span class="tm_cnt">
+                                                        <button type="button" class="btn btn-warning w-100">삭제</button>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>

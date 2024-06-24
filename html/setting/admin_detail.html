@@ -1,0 +1,121 @@
+<?php
+include_once('../../layout/header.html');
+include_once('../../layout/header_sub.html');
+?>
+
+<div class="page-header d-print-none">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle fs-4 mb-2">
+                    홈 > 설정 > 관리자목록 > 관리자상세
+                </div>
+                <h2 class="page-title">
+                    관리자상세 (user_id)
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page body -->
+<div class="page-body">
+    <div class="container-xl">
+        <form action="">
+        <div class="list-btns justify-content-end mb-3">
+            <div>
+                <a href="./admin.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">아이디</div>
+                                <input class="form-control" id="" type="text" name="" value="admin1" readonly>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">비밀번호 재설정</div>
+                                <input type="password" class="form-control">
+                                <small class="form-hint">
+                                    비밀번호를 변경할 때만 입력해주세요
+                                </small>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2 required">이름</div>
+                                <div class="input-group">
+                                    <input class="form-control max-text" id="" maxlength="20" type="text" name="" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text max-len"><b>0</b> / 20</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2 required">휴대폰번호</div>
+                                <div class="input-group">
+                                    <input class="form-control" id="" type="tel" name="" required>
+                                </div>
+                                <small class="form-hint">
+                                    -없이 숫자만 입력
+                                </small>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2 required">상태</div>
+                                <select name="" id="" class="form-select" required>
+                                    <option value="">승인</option>
+                                    <option value="">대기</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">부가정보</h3></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">회원가입/최종수정</div>
+                                <div>
+                                    admin1/2022-05-03 13:59:59  |  admin1/2022-05-03 13:59:59 
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="subheader mb-2">접속정보</div>
+                                <div>
+                                    2019-02-07 13:59:59   |   IP : 100.100.100.100
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-btns justify-content-between mt-3">
+            <div>
+                <button type="button" class="btn btn-warning">삭제</button>
+            </div>
+            <div>
+                <a href="./admin.html" class="btn btn-secondary">목록</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<?php
+include_once('../../layout/footer_sub.html');
+include_once('../../layout/footer.html');
+?>
